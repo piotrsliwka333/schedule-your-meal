@@ -1,3 +1,15 @@
-h1 {
-  color: yellow;
-}
+//generic
+@import "generic/reset";
+
+//vendor
+//@import "vendor/BootStrap";
+
+// settings
+@import "settings/mixins";
+@import "settings/colors";
+@import "settings/fonts";
+@import "settings/base";
+
+//elements
+@import "elements/Templates/Logo";
+@import "elements/Templates/HomeTemplate";

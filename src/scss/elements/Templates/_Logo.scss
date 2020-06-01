@@ -1,0 +1,16 @@
+.logo {
+  padding: 20px;
+  font-size: 3rem;
+  font-family: $font-logo;
+  text-decoration: none;
+
+
+  &-first {
+    color: white;
+    text-decoration: none;
+  }
+
+  &-second {
+    color: $color-button-highlight-headers;
+  }
+}

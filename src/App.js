@@ -1,12 +1,12 @@
-import React from 'react';
-import './scss/main.scss'
+import React from "react"
+import {HomeTemplate} from "./Components/Templates/HomeTemplates";
+import {BrowserRouter} from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Helldo</h1>
-    </div>
-  );
+export const App = () => {
+
+	return(
+		<BrowserRouter>
+			<HomeTemplate/>
+		</BrowserRouter>
+	)
 }
-
-export default App;
