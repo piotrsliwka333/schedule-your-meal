@@ -1,12 +1,15 @@
 import React from "react"
 import {HomeTemplate} from "./Components/Templates/HomeTemplates";
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter,Route} from "react-router-dom";
+import {Home} from "./Components/Home/Home";
 
 export const App = () => {
 
 	return(
 		<BrowserRouter>
-			<HomeTemplate/>
+			<>
+				<Route path={'/'} component={Home}/>
+			</>
 		</BrowserRouter>
 	)
 }

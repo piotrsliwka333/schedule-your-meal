@@ -2,7 +2,7 @@
 @import "generic/reset";
 
 //vendor
-//@import "vendor/BootStrap";
+@import "vendor/BootStrap";
 
 // settings
 @import "settings/mixins";
@@ -13,3 +13,8 @@
 //elements
 @import "elements/Templates/Logo";
 @import "elements/Templates/HomeTemplate";
+
+@import "elements/Home/Home";
+
+//SLIDER
+@import "elements/Home/HomeSlider/HomeSlider";
