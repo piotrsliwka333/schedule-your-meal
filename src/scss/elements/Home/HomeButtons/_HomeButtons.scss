@@ -1,0 +1,12 @@
+.home-button {
+  font-weight: bold;
+  font-size: 1.5rem;
+  box-shadow: 1px 1px 1px $color-header-column-text;
+  border-radius: 2px;
+  width: 190px;
+  background-color: $color-button-highlight-headers;
+  border: none;
+  color: white;
+  font-family: $font-text;
+  padding: 15px 20px;
+}

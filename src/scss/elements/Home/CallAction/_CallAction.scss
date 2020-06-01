@@ -1,0 +1,39 @@
+.call-action {
+  width: 100%;
+  padding: 60px 0;
+  background-color: $color-header-column-text;
+
+  &__content:first-of-type {
+    margin-bottom: 30px;
+    @include desktop {
+      margin-bottom: 0;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .call-action__title {
+      font-size: 2.2rem;
+      text-align: left;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .call-action__text{
+      font-size: 1.8rem;
+      text-align: left;
+      color: white;
+    }
+
+    .call-action__button {
+      align-self: center;
+      @include desktop {
+        align-self: flex-end;
+      }
+
+    }
+  }
+}
