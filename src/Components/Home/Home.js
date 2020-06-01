@@ -4,6 +4,7 @@ import {HomeSlider} from "./HomeSlider/HomeSlider";
 import {CallAction} from "./CallAction/CallAction";
 import {HomeAboutApplication} from "./HomeAboutApplication/HomeAboutApplication";
 import {HomeNewsLetter} from "./HomeNewsLetter/HomeNewsLetter";
+import {HomeAboutAuthor} from "./HomeAboutAuthor/HomeAboutAuthor";
 
 export const Home = () => {
 
@@ -14,6 +15,7 @@ export const Home = () => {
 				<CallAction/>
 				<HomeAboutApplication/>
 				<HomeNewsLetter/>
+				<HomeAboutAuthor/>
 			</main>
 		</HomeTemplate>
 	)
