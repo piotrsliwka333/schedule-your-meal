@@ -6,9 +6,9 @@ export const HomeAboutApplicationElement = (props) => {
 
 	return(
 		<Col className='col-10 col-md-6 col-xl-3 about-application__content'>
-			<a className='about-application__icon'>
+			<span className='about-application__icon'>
 				<i className={icon}/>
-			</a>
+			</span>
 			<h4 className='about-application__title'>{title}</h4>
 			<p className='about-application__text'>{text}</p>
 		</Col>

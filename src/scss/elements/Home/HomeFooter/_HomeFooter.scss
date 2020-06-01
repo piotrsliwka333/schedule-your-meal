@@ -1,0 +1,105 @@
+.contact {
+  padding-top: 40px;
+  background-color: $color-side-panel;
+  &-content {
+    @include desktop {
+      padding-bottom: 20px;
+    }
+    .contact__title {
+      font-size: 2.5rem;
+      color: $color-bcg;
+      margin-bottom: 12px;
+    }
+
+    .contact__text {
+      width: 75%;
+      font-size: 1.8rem;
+      color: $color-bcg;
+    }
+
+    .contact-list {
+      padding-left: 20px;
+
+      &__item {
+        color: $color-bcg;
+        font-size: 1.8rem;
+        list-style: disc;
+      }
+    }
+    .contact-form {
+      margin: 10px 0 30px 0;
+      display: flex;
+      &__input {
+        border-radius: 5px 0 0 5px;
+        width: 40%;
+        height: 40px;
+        border: none;
+        padding: 0 10px;
+        font-size: 1.6rem;
+        @include tablet {
+          width: 60%;
+        }
+
+      }
+      .contact-form__button {
+        border-radius: 0 5px 5px 0;
+        width: 30%;
+        padding: 9px 20px;
+        font-size: 1.5rem;
+        @include tablet {
+          width: 40%;
+        }
+      }
+    }
+
+    .contact-social-media {
+      padding-left: 10px;
+
+      &__icon {
+        font-size: 3.3rem;
+        color: $color-bcg;
+      }
+      &__icon:nth-of-type(2) {
+        margin: 0 40px;
+
+      }
+    }
+  }
+
+  &-content:nth-of-type(2) {
+    margin: 40px 0;
+    @include tablet {
+      margin: 0;
+    }
+  }
+
+  &-content:nth-of-type(3) {
+    padding-bottom: 20px;
+    @include tablet {
+      margin-top: 40px;
+      padding-bottom: 0;
+    }
+    @include desktop {
+      margin-top: 0;
+    }
+  }
+
+  &-content:nth-of-type(3) .contact__title {
+    margin-bottom: 20px;
+
+  }
+
+  &__copyright {
+    background-color: $color-header-column-text;
+    text-align: center;
+    color: $color-bcg;
+    font-size: 1.7rem;
+    padding: 20px 10px 10px 10px;
+
+    &-highlight {
+      color: $color-button-highlight-headers;
+    }
+  }
+
+
+}

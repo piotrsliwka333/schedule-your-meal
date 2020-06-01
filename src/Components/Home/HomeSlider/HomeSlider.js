@@ -27,18 +27,18 @@ export const HomeSlider = () => {
 		<section className='slider'>
 			<Container >
 				<Row className='align-items-center'>
-					<a onClick={handlePrevSlide} className='slider__arrows col-2 col-md-1 col-xl-1'>
+					<span onClick={handlePrevSlide} className='slider__arrows col-2 col-md-1 col-xl-1'>
 						<i className="fas fa-chevron-left"/>
-					</a>
+					</span>
 					{currentSlide === 1 && <HomeSliderContent title={'Pyszne'}
 					                                          text={'Lorem elimo ipsum dolor sit amet, consectetur adipisicing elit. Animi beatae dignissimos doloribus eaque enim, iure obcaecati quisquam reprehenderit unde velit? Aliquam debitis dolorum ea ex excepturi hic nisi sit vero!'}/>}
 					{currentSlide === 2 && <HomeSliderContent title={'Dobre'}
 					                                          text={'Lorem alemo ipsum dolor sit amet, consectetur adipisicing elit. Animi beatae dignissimos doloribus eaque enim, iure obcaecati quisquam reprehenderit unde velit? Aliquam debitis dolorum ea ex excepturi hic nisi sit vero!'}/>}
 					{currentSlide === 3 && <HomeSliderContent title={'Mniam'}
 					                                          text={'Lorem  pikasso ipsum dolor sit amet, consectetur adipisicing elit. Animi beatae dignissimos doloribus eaque enim, iure obcaecati quisquam reprehenderit unde velit? Aliquam debitis dolorum ea ex excepturi hic nisi sit vero!'}/>}
-					<a onClick={handleNextSlide} className='slider__arrows col-2 col-md-1 col-xl-1'>
+					<span onClick={handleNextSlide} className='slider__arrows col-2 col-md-1 col-xl-1'>
 						<i className="fas fa-chevron-right"/>
-					</a>
+					</span>
 				</Row>
 			</Container>
 		</section>

@@ -4,11 +4,11 @@ import Author from '../../../images/piotrSliwka.jpg'
 export const HomeAboutAuthor = () => {
 
 	return (
-		<section className='about-author'>
+		<section className='about-author' id='about-author'>
 			<Container>
 				<Row className='justify-content-center'>
 					<Col className='col-10 col-md-10 col-xl-5 about-author__content'>
-								<img  className='about-author__image' src={Author}/>
+						<img alt='author' className='about-author__image' src={Author}/>
 					</Col>
 					<Col className='col-10 col-md-10 col-xl-5 about-author__content'>
 						<h6 className='about-author__title'>Lorem ipsum dolor sit amet</h6>

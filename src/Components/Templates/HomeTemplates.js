@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {Logo} from "./Logo";
 import {Link, NavLink} from "react-router-dom";
+import {Link as LinkScroll} from 'react-scroll'
 
 export const HomeTemplate = (props) => {
 	const [menuOpen,setMenuOpen] = useState(false)
@@ -13,17 +14,17 @@ export const HomeTemplate = (props) => {
 		<>
 			<header className='heder'>
 				<Logo/>
-				<a onClick={handleShowMenu} className='menu-toggle'>
+				<button onClick={handleShowMenu} className='menu-toggle'>
 					<i className="fas fa-bars"/>
-				</a>
+				</button>
 				<nav className={menuOpen ? 'home-nav' : 'home-nav hide'}>
 					<ul className='home-nav__list'>
 						<li className='home-nav__element'><Link className='home-nav__link active' to={'/application/login'}>Zaplanuj
 							posiłki</Link></li>
-						<li className='home-nav__element'><NavLink onClick={handleShowMenu} className='home-nav__link' to={'/why'}>Dlaczego warto ?</NavLink>
+						<li className='home-nav__element'><LinkScroll smooth={true} to={'about-application'} onClick={handleShowMenu} className='home-nav__link'>Dlaczego warto ?</LinkScroll>
 						</li>
-						<li className='home-nav__element'><NavLink onClick={handleShowMenu} className='home-nav__link' to={'/about'}> O mnie </NavLink></li>
-						<li className='home-nav__element'><NavLink onClick={handleShowMenu} className='home-nav__link' to={'/contact'}>Contact</NavLink></li>
+						<li className='home-nav__element'><LinkScroll smooth={true} to={'about-author'} onClick={handleShowMenu} className='home-nav__link'> O mnie </LinkScroll></li>
+						<li className='home-nav__element'><LinkScroll smooth={true} to={'contact'}  onClick={handleShowMenu} className='home-nav__link'>Contact</LinkScroll></li>
 					</ul>
 				</nav>
 			</header>

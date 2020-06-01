@@ -5,7 +5,7 @@ import {HomeAboutApplicationElement} from "./HomeAboutApplicationElement";
 export const HomeAboutApplication = () => {
 
 	return (
-		<section className='about-application'>
+		<section className='about-application' id='about-application'>
 			<Container>
 				<Row className='justify-content-center justify-content-xl-between'>
 					<HomeAboutApplicationElement icon='fas fa-check' title='Lorem ipsum dolor sit amet.'
