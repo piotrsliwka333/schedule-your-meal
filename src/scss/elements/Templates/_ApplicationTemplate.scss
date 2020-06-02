@@ -1,5 +1,6 @@
 
 .app-header {
+  font-family: $font-text;
   background-color: $color-header-column-text;
   height: 8vh;
   @include tablet {
@@ -94,7 +95,10 @@
           color: $color-bcg;
           position: relative;
           transition: 0.5s;
-
+          &:hover {
+            text-decoration: none;
+            background-color: lighten($color-side-panel,5%);
+          }
         }
         .active {
           text-decoration: none;
@@ -123,6 +127,7 @@
 
 
   .main-content {
+    padding: 20px 40px;
     height: 100%;
     width: 100%;
     background-image: url("/../../../images/image.png");

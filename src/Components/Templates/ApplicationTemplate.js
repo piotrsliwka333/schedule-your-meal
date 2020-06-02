@@ -7,7 +7,7 @@ const style = {
 	backgroundImage: `url('${appBcg}')`
 }
 
-export const ApplicationTemplate = () => {
+export const ApplicationTemplate = (props) => {
 	const [openMenu,setOpenMenu] = useState( false)
 
 	const handleOpenMenu = (e) => {
@@ -40,6 +40,7 @@ export const ApplicationTemplate = () => {
 					</ul>
 				</nav>
 				<div className='main-content' style={style}>
+					{props.children}
 				</div>
 			</main>
 		</>
