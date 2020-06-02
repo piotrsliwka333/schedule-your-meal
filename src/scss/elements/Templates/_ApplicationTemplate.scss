@@ -1,0 +1,138 @@
+
+.app-header {
+  background-color: $color-header-column-text;
+  height: 8vh;
+  @include tablet {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .logo {
+    display: none;
+    @include tablet {
+      display: block;
+    }
+
+  }
+  .user-box {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include tablet {
+      justify-content: flex-end;
+    }
+
+    .user-wrapper {
+      margin-left: 30px;
+      display: flex;
+      align-items: center;
+      @include tablet {
+        margin-left: 0;
+      }
+    }
+
+    &__name {
+      font-size: 3rem;
+      color: $color-bcg;
+    }
+
+    &__icon {
+      margin: 0 50px 0 20px;
+      font-size: 5rem;
+      color: $color-button-highlight-headers;
+    }
+    .menu-toggle {
+      margin-right: 10px;
+      background-color: transparent;
+      font-size: 3rem;
+      border: none;
+      outline: none;
+      @include desktop {
+        display: none;
+      }
+    }
+  }
+}
+
+// main
+
+.app-main {
+  height: 92vh;
+  position: relative;
+  display: flex;
+  .side-navigation {
+    border: 1px solid black;
+    border-radius: 0 2px 2px 0;
+    box-shadow: -2px 2px 5px black;
+    background-color: $color-side-panel;
+    position: absolute;
+    width: 50%;
+    height: 100%;
+
+    @include tablet {
+      width: 30%;
+
+    }
+
+    @include desktop {
+      width: 15%;
+      position: static;
+      display: block;
+    }
+
+    .nav-list {
+
+      &__element {
+
+        .nav-list__link {
+          cursor: pointer;
+          display: block;
+          padding: 20px 0 20px 10px;
+          font-size: 2.5rem;
+          color: $color-bcg;
+          position: relative;
+          transition: 0.5s;
+
+        }
+        .active {
+          text-decoration: none;
+          transition: 0.5s;
+          border-left: 4px solid $color-button-highlight-headers;
+
+        }
+        .active::after {
+          transition: 0.5s;
+          position: absolute;
+          display: block;
+          content: '>';
+          color: $color-button-highlight-headers;
+          font-size: 3.5rem;
+          font-weight: 500;
+          right: 12px;
+          top: 50%;
+          transform: translateY(-50%);
+
+        }
+
+      }
+    }
+
+  }
+
+
+  .main-content {
+    height: 100%;
+    width: 100%;
+    background-image: url("/../../../images/image.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    @include desktop {
+      width: 85%;
+    }
+
+  }
+}
+

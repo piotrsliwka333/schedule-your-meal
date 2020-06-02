@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Logo} from "./Logo";
-import {Link, NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {Link as LinkScroll} from 'react-scroll'
 
 export const HomeTemplate = (props) => {
