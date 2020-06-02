@@ -1,13 +1,15 @@
 import React, {useState} from "react";
 import {ApplicationTemplate} from "../../Templates/ApplicationTemplate";
 
-export const ApplicationLogin = () => {
+export const ApplicationLogin = (props) => {
+	const {loginFn} = props
 	const [name, setName] = useState('')
 	const [nameError, setNameError] = useState(false)
 
 	const handleSaveName = (e) => {
 		e.preventDefault();
-		if (name.length > 0) {
+		if (name.length > 0 && typeof loginFn === 'function') {
+			loginFn(e);
 			localStorage.setItem('name', name)
 			setNameError(false)
 			setName('')
