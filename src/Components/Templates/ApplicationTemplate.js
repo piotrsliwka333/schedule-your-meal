@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Logo} from "./Logo";
 import appBcg from '../../images/image.png'
 import {NavLink} from "react-router-dom";
@@ -9,6 +9,15 @@ const style = {
 
 export const ApplicationTemplate = (props) => {
 	const [openMenu,setOpenMenu] = useState( false)
+	const [name,setName] = useState('Imie')
+
+	useEffect(()=> {
+		if(localStorage.getItem('name') !== null) {
+			setName(localStorage.getItem('name'))
+		} else {
+			setName('Imię')
+		}
+	},[localStorage.getItem('name')])
 
 	const handleOpenMenu = (e) => {
 		e.preventDefault();
@@ -21,7 +30,7 @@ export const ApplicationTemplate = (props) => {
 				<Logo/>
 				<div className='user-box'>
 					<div className='user-wrapper'>
-						<span className='user-box__name'>Imie</span>
+						<span className='user-box__name'>{name}</span>
 						<span className='user-box__icon'>
 						<i className="far fa-user-circle"/>
 					</span>

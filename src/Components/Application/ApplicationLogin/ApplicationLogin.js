@@ -1,7 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
 import {ApplicationTemplate} from "../../Templates/ApplicationTemplate";
 
 export const ApplicationLogin = () => {
+	const [name, setName] = useState('')
+	const [nameError, setNameError] = useState(false)
+
+	const handleSaveName = (e) => {
+		e.preventDefault();
+		if (name.length > 0) {
+			localStorage.setItem('name', name)
+			setNameError(false)
+			setName('')
+		} else {
+			setNameError(true)
+		}
+	}
 
 	return (
 		<ApplicationTemplate>
@@ -10,8 +23,11 @@ export const ApplicationLogin = () => {
 				<p className='login__text'>
 					Wygląda na to że jesteś tutaj <br/> pierwszy raz!
 				</p>
-				<form className='login-form'>
-					<input type='text' className='login-form__input' placeholder='tutaj wpisz jak masz na imię'/>
+				<form onSubmit={e => handleSaveName(e)} className='login-form'>
+					<input type='text' value={name} onChange={e => setName(e.target.value)}
+					       className={nameError ? 'login-form__input error' : 'login-form__input'}
+					       placeholder='tutaj wpisz jak masz na imię'/>
+					{nameError && <p className='error-message'>imię jest obowiązkowe</p>}
 					<button type='submit' className='home-button login-form__button'>Gotowe!</button>
 				</form>
 				<p className='login__information'>

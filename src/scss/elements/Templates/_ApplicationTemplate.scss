@@ -64,6 +64,7 @@
   position: relative;
   display: flex;
   .side-navigation {
+    z-index: 2;
     border: 1px solid black;
     border-radius: 0 2px 2px 0;
     box-shadow: -2px 2px 5px black;
@@ -127,7 +128,7 @@
 
 
   .main-content {
-    padding: 20px 40px;
+    padding: 20px 30px;
     height: 100%;
     width: 100%;
     background-image: url("/../../../images/image.png");
@@ -135,6 +136,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     @include desktop {
+      padding: 20px 40px;
       width: 85%;
     }
 
