@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1993e724476b4914d76b6dba96a5a619",
+    "revision": "26ad13d485f7dea29d9d710903e8a84b",
     "url": "/schedule-your-meal/index.html"
   },
   {
-    "revision": "e0a1371e2edbcd84d754",
-    "url": "/schedule-your-meal/static/css/main.b6a9cd8f.chunk.css"
+    "revision": "7390b3be3ae10584b596",
+    "url": "/schedule-your-meal/static/css/main.2284313f.chunk.css"
   },
   {
     "revision": "dce923fd34eb761d572f",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/schedule-your-meal/static/js/2.4b9feb22.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "e0a1371e2edbcd84d754",
+    "revision": "7390b3be3ae10584b596",
     "url": "/schedule-your-meal/static/js/main.20f3d764.chunk.js"
   },
   {
