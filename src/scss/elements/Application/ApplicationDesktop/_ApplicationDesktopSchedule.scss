@@ -6,17 +6,24 @@
   height: 70%;
 
   &__title {
+    height: 12%;
     padding-bottom: 10px;
     text-align: center;
     font-size: 1.8rem;
     font-weight: 600;
     color: $color-button-highlight-headers;
     @include tablet {
+      height: 7%;
       font-size: 2.3rem;
     }
   }
 
   &-wrapper {
-    height: 84%;
+    margin-bottom: 5px;
+    height: 75%;
+    @include tablet {
+      margin-bottom: 0;
+      height: 85%;
+    }
   }
 }

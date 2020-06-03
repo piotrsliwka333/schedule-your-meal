@@ -10,8 +10,8 @@ export const ApplicationDesktop = () => {
 	return (
 		<ApplicationTemplate>
 			<section className='desktop'>
-				<Container fluid className='h-25 pl-0 pr-0 mb-1'>
-					<Row class='h-100'>
+				<Container fluid className='h-25 pr-0 pl-0 mb-1'>
+					<Row>
 						<ApplicationDesktopButtons/>
 						<ApplicationDesktopNotifications/>
 					</Row>

@@ -1,9 +1,11 @@
 .desktop__schedule__buttons {
-  height: 5%;
   padding: 0 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @include tablet {
+    height: 5%;
+  }
   .desktop__schedule__button {
     color: $color-button-highlight-headers;
     background: transparent;
