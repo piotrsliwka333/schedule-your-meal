@@ -1,5 +1,7 @@
 .contact {
-  padding-top: 40px;
+  padding: 40px 0 0 0;
+
+
   background-color: $color-side-panel;
   &-content {
     @include desktop {
@@ -90,11 +92,12 @@
   }
 
   &__copyright {
+    margin-bottom: -10px;
     background-color: $color-header-column-text;
     text-align: center;
     color: $color-bcg;
     font-size: 1.7rem;
-    padding: 20px 10px 10px 10px;
+    padding: 20px 10px 20px 10px;
 
     &-highlight {
       color: $color-button-highlight-headers;
