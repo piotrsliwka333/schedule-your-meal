@@ -19,7 +19,7 @@ export const HomeTemplate = (props) => {
 				</button>
 				<nav className={menuOpen ? 'home-nav' : 'home-nav hide'}>
 					<ul className='home-nav__list'>
-						<li className='home-nav__element'><Link className='home-nav__link active' to={'/application/login'}>Zaplanuj
+						<li className='home-nav__element'><Link className='home-nav__link active' to={'/schedule-your-meal/application/login'}>Zaplanuj
 							posiłki</Link></li>
 						<li className='home-nav__element'><LinkScroll smooth={true} to={'about-application'} onClick={handleShowMenu} className='home-nav__link'>Dlaczego warto ?</LinkScroll>
 						</li>

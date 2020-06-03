@@ -5,7 +5,7 @@ export const ApplicationDesktopButton = (props) => {
 	const {name} = props
 	return(
 		<div className="desktop__button-container">
-			<Link className='desktop__button' to='/application/schedule'>
+			<Link className='desktop__button' to='/schedule-your-meal/application/schedule'>
 				<i className="far fa-plus-square"/>
 			</Link>
 			<p className='button-description'>{name}</p>

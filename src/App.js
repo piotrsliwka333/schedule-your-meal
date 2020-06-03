@@ -34,18 +34,18 @@ export const App = () => {
 				{/*<Route path={'/application/desktop'} component={ApplicationDesktop}/>*/}
 				{/*<Route path={'/application/recipes'} component={ApplicationRecipes}/>*/}
 				{/*<Route path={'/application/schedule'} component={ApplicationSchedule}/>*/}
-				<Route exact path={'/'} component={Home}/>
-				<Route path={'/application/login'} render={() => (
-					!logged ? (<ApplicationLogin loginFn={handleLoggedIn}  />) : (<Redirect to='/application/desktop'/>)
+				<Route exact path={'/schedule-your-meal'} component={Home}/>
+				<Route path={'/schedule-your-meal/application/login'} render={() => (
+					!logged ? (<ApplicationLogin loginFn={handleLoggedIn}  />) : (<Redirect to='/schedule-your-meal/application/desktop'/>)
 				)}/>
-				<Route path={'/application/desktop'} render={() => (
-					logged ? (<ApplicationDesktop/>) : (<Redirect to='/application/login'/>)
+				<Route path={'/schedule-your-meal/application/desktop'} render={() => (
+					logged ? (<ApplicationDesktop/>) : (<Redirect to='/schedule-your-meal/application/login'/>)
 				)}/>
-				<Route path={'/application/recipes'} render={() => (
-					logged ? (<ApplicationRecipes/>) : (<Redirect to='/application/login'/>)
+				<Route path={'/schedule-your-meal/application/recipes'} render={() => (
+					logged ? (<ApplicationRecipes/>) : (<Redirect to='/schedule-your-meal/application/login'/>)
 				)}/>
-				<Route path={'/application/schedule'} render={() => (
-					logged ? (<ApplicationSchedule/>) : (<Redirect to='/application/login'/>)
+				<Route path={'/schedule-your-meal/application/schedule'} render={() => (
+					logged ? (<ApplicationSchedule/>) : (<Redirect to='/schedule-your-meal/application/login'/>)
 				)}/>
 			</>
 		</BrowserRouter>

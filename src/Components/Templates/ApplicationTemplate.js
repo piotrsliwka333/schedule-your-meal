@@ -43,9 +43,9 @@ export const ApplicationTemplate = (props) => {
 			<main className='app-main'>
 				<nav className={openMenu ? 'side-navigation' : 'side-navigation hide'}>
 					<ul className="nav-list">
-						<li className="nav-list__element"><NavLink to='/application/desktop' className='nav-list__link'>Pulpit</NavLink></li>
-						<li className="nav-list__element"><NavLink to='/application/recipes' className='nav-list__link'>Przepisy</NavLink></li>
-						<li className="nav-list__element"><NavLink to='/application/schedule' className='nav-list__link'>Plany</NavLink></li>
+						<li className="nav-list__element"><NavLink to='/schedule-your-meal/application/desktop' className='nav-list__link'>Pulpit</NavLink></li>
+						<li className="nav-list__element"><NavLink to='/schedule-your-meal/application/recipes' className='nav-list__link'>Przepisy</NavLink></li>
+						<li className="nav-list__element"><NavLink to='/schedule-your-meal/application/schedule' className='nav-list__link'>Plany</NavLink></li>
 					</ul>
 				</nav>
 				<div className='main-content' style={style}>
