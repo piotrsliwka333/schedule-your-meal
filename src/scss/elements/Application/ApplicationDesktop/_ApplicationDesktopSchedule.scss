@@ -1,0 +1,22 @@
+.desktop__schedule {
+  padding: 10px 20px 0 20px;
+  background-color: $color-bcg;
+  border: 2px dashed $color-text-row-ext-icons;
+  border-radius: 2px;
+  height: 70%;
+
+  &__title {
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: $color-button-highlight-headers;
+    @include tablet {
+      font-size: 2.3rem;
+    }
+  }
+
+  &-wrapper {
+    height: 84%;
+  }
+}

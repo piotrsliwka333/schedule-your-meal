@@ -1,0 +1,36 @@
+.desktop__button-container {
+  width: 30%;
+  background-color: $color-bcg;
+  border: 2px dashed $color-msg-success;
+  border-radius: 1px;
+  @include tablet {
+    padding: 15px 10px;
+  }
+  @include desktop {
+    padding: 21px 10px;
+    width: 25%;
+  }
+
+  .desktop__button {
+    display: block;
+    text-align: center;
+    font-size: 3rem;
+    color: $color-msg-success;
+    @include tablet {
+      font-size: 6rem;
+    }
+  }
+
+  .button-description {
+    text-align: center;
+    color: $color-msg-success;
+    font-size: 1.2rem;
+
+
+
+    @include tablet {
+      font-size: 2rem;
+    }
+  }
+
+}

@@ -1,0 +1,12 @@
+.desktop__notifications-wrapper {
+  display: flex;
+  margin-top: 20px;
+
+  @include tablet {
+    flex-direction: column;
+    margin-top: 0;
+    height: 200px;
+    display: flex;
+  }
+
+}

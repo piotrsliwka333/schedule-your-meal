@@ -1,0 +1,52 @@
+$days: 7;
+
+.desktop__schedule__box {
+  margin-bottom: 30px;
+  border-top: 2px solid $color-text-row-ext-icons;
+  width: 100%;
+  @include tablet {
+    border-bottom: none;
+    width: 50%;
+  }
+  @include desktop {
+    margin-bottom: 0;
+    width: 100%/$days
+  }
+
+
+  .desktop__schedule__day {
+    border-bottom: 2px solid $color-text-row-ext-icons;
+    padding: 10px 5px;
+    font-weight: bold;
+    color: black;
+    font-size: 2.5rem;
+
+    @include tablet {
+      font-size: 2rem;
+      padding: 20px 5px;
+    }
+  }
+  .desktop__schedule__meal {
+
+    text-align: left;
+    padding: 5px 5px;
+    border-bottom: 2px solid $color-text-row-ext-icons;
+    color: $color-text-row-ext-icons;
+    font-size: 1.5rem;
+    @include desktop {
+      height: 50px;
+    }
+    @media (min-width: 1600px) {
+      height: 66px;
+
+    }
+  }
+
+  .desktop__schedule__meal:last-of-type {
+    border-bottom: 2px solid $color-button-highlight-headers;
+    @include tablet {
+      border-bottom: 2px solid $color-text-row-ext-icons;
+    }
+  }
+
+}

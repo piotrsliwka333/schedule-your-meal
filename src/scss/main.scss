@@ -36,4 +36,18 @@
 //ApplicationLogin
 @import "elements/Application/ApplicationLogin";
 //ApplicationDesktop
-@import "elements/Application/ApplicationDesktop";
+@import "elements/Application/ApplicationDesktop/ApplicationDesktop";
+//ApplicationDesktopButtons
+@import "elements/Application/ApplicationDesktop/ApplicationDesktopButtons";
+//ApplicationDesktopButton
+@import "elements/Application/ApplicationDesktop/ApplicationDesktopButton";
+//ApplicationDesktopNotifications
+@import "elements/Application/ApplicationDesktop/ApplicationDesktopNotifications";
+//ApplicationDesktopNotification
+@import "elements/Application/ApplicationDesktop/ApplicationDesktopNotification";
+//ApplicationDesktopSchedule
+@import "elements/Application/ApplicationDesktop/ApplicationDesktopSchedule";
+//ApplicationDesktopScheduleElement
+@import "elements/Application/ApplicationDesktop/ApplicationDesktopScheduleElement";
+//ApplicationDesktopScheduleButtons
+@import "elements/Application/ApplicationDesktop/ApplicationDesktopScheduleButtons";

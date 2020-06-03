@@ -35,14 +35,20 @@
     }
 
     &__name {
-      font-size: 3rem;
+      font-size: 2.5rem;
       color: $color-bcg;
+      @include tablet {
+        font-size: 3rem;
+      }
     }
 
     &__icon {
       margin: 0 50px 0 20px;
-      font-size: 5rem;
+      font-size: 4.2rem;
       color: $color-button-highlight-headers;
+      @include desktop {
+        font-size: 5rem;
+      }
     }
     .menu-toggle {
       margin-right: 10px;
@@ -128,13 +134,17 @@
 
 
   .main-content {
-    padding: 20px 30px;
+    padding: 20px 10px;
     height: 100%;
     width: 100%;
     background-image: url("/../../../images/image.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+
+    @include tablet {
+      padding: 20px 30px;
+    }
     @include desktop {
       padding: 20px 40px;
       width: 85%;

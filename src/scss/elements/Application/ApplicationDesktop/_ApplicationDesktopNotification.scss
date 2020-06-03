@@ -1,0 +1,110 @@
+.desktop__notification {
+  padding: 3px 5px;
+  background-color: $color-bcg;
+  border: 2px dashed $color-text-row-ext-icons;
+  border-radius: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &:hover &__text  {
+    display: block;
+
+  }
+
+
+  &__icon {
+    margin-right: 10px;
+    display: block;
+    font-size: 2rem;
+    @include tablet {
+      margin-right: 0;
+      font-size: 2.2rem;
+    }
+    @include desktop {
+      font-size: 2.5rem;
+    }
+  }
+
+
+
+  &__text {
+    display: none;
+    align-self: flex-end;
+    width: 70%;
+    font-size: 0.8rem;
+    font-weight: bold;
+    @include tablet {
+      display: block;
+      width: 82%;
+      font-size: 1.15rem;
+    }
+    @include desktop {
+      width: 90%;
+      font-size: 1.5rem;
+    }
+  }
+
+  &__button {
+    font-size: 1rem;
+    border: none;
+    background-color: $color-msg-success;
+    font-weight: bold;
+    color: white;
+    align-self: flex-start;
+  }
+}
+
+// personal styling
+
+.info {
+  @include tablet {
+    margin: 0 0 18px 0;
+  }
+  border-color: $color-msg-info;
+  .desktop__notification__icon {
+    color: $color-msg-info;
+  }
+  .desktop__notification__text {
+    color: $color-msg-info;
+  }
+  .desktop__notification__button {
+    background-color: $color-msg-info;
+  }
+
+}
+
+.warning {
+  margin: 0 10px;
+  @include tablet {
+    margin: 0 0 18px 0;
+  }
+  border-color: $color-msg-warning;
+  .desktop__notification__icon {
+    color: $color-msg-warning;
+  }
+  .desktop__notification__text {
+    color:$color-msg-warning;
+  }
+  .desktop__notification__button {
+    background-color: $color-msg-warning;
+  }
+
+}
+
+.cheering {
+
+  border-color: $color-msg-success;
+  .desktop__notification__icon {
+    color:  $color-msg-success;
+  }
+
+
+  .desktop__notification__text {
+    color:  $color-msg-success;
+  }
+  .desktop__notification__button {
+    background-color:  $color-msg-success;
+  }
+
+}
