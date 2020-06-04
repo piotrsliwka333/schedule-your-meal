@@ -15,9 +15,11 @@
 
   }
   .instructions-form {
+    position: relative;
     display: flex;
     padding: 5px;
     justify-content: space-between;
+    margin-bottom: 20px;
     &__textarea {
       font-family: $font-text;
       width: 80%;
@@ -37,6 +39,21 @@
       font-size: 1.3rem;
       color: #4a4a49;
     }
+
+    .error {
+      border: 1px solid tomato;
+    }
+
+    .error-message {
+      top: 60px;
+      font-size: 1.2rem;
+      color: tomato;
+      position: absolute;
+      @include tablet {
+        top: 90px;
+      }
+    }
+
     &__button {
       background: transparent;
       border: none;
