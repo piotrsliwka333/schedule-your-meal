@@ -23,7 +23,7 @@ export const ApplicationRecipesDescription = (props) => {
 	}
 
 	return (
-		<Col className='recipes__description'>
+		<Col className='recipes__description col-12'>
 			<form
 				onSubmit={e => handleCheckAddNewRecipe(e, titleValue, descriptionValue, instructionsValue, ingredientsValue)}
 				className='description-form'>

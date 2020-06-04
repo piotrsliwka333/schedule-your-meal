@@ -1,0 +1,39 @@
+.recipes-element {
+  margin-bottom: 5px;
+  @include tablet {
+    margin-bottom: 10px;
+  }
+  &__text {
+    font-size: 1.5rem;
+    color: $color-side-panel;
+    @include tablet {
+      font-size: 2rem;
+    }
+    @media (min-width: 1600px) {
+      font-size: 2.3rem;
+    }
+  }
+  .recipes-element__icon-box {
+    display: inline-block;
+  }
+
+  &__edit-button {
+    margin-left: 10px;
+    font-size: 1.5rem;
+    color: $color-msg-warning;
+    background: transparent;
+    border: none;
+    width: 2rem;
+
+  }
+
+  &__delete-button {
+    background: transparent;
+    margin-left: 3px;
+    border: none;
+    width: 2rem;
+    line-height: 2rem;
+    font-size: 1.5rem;
+    color: $color-trash-icon;
+  }
+}

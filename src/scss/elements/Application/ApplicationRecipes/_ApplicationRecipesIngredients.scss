@@ -1,0 +1,64 @@
+.recipes__ingredients {
+  height: 35%;
+
+  @include tablet {
+    height: 65%;
+  }
+
+  .recipes__elements-box {
+    list-style: disc;
+  }
+
+  &__title {
+    color: $color-side-panel;
+    padding-bottom: 5px;
+    font-size: 2rem;
+    border-bottom: 2px solid $color-text-row-ext-icons;
+
+  }
+  .ingredients-form {
+    padding: 5px;
+    .ingredients-form-wrapper {
+      display: flex;
+      height: 55px;
+      justify-content: space-between;
+      @include tablet {
+        height: 80px;
+        margin-bottom: 20px;
+      }
+    }
+
+    &__input {
+      align-self: flex-start;
+      padding: 10px 5px;
+      font-family: $font-text;
+      width: 80%;
+      border-radius: 2px;
+      border: 1px solid $color-text-row-ext-icons;
+      font-size: 1.4rem;
+
+      resize: none;
+      @include tablet {
+        width: 90%;
+      }
+    }
+    &__textarea::placeholder {
+      font-size: 1.3rem;
+      color: #4a4a49;
+    }
+    &__button {
+      background: transparent;
+      border: none;
+      align-self: flex-start;
+      cursor: pointer;
+      display: flex;
+      padding: 0;
+      margin: 0;
+      font-size: 3rem;
+      color: $color-msg-success;
+      @include tablet {
+        font-size: 3.3rem;
+      }
+    }
+  }
+}

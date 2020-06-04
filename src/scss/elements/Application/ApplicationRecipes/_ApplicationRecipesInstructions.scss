@@ -1,0 +1,55 @@
+.recipes__instructions {
+
+  height: 35%;
+  margin-bottom: 10px;
+  @include tablet {
+    margin-bottom: 0;
+    height: 65%;
+  }
+
+  &__title {
+    color: $color-side-panel;
+    padding-bottom: 5px;
+    font-size: 2rem;
+    border-bottom: 2px solid $color-text-row-ext-icons;
+
+  }
+  .instructions-form {
+    display: flex;
+    padding: 5px;
+    justify-content: space-between;
+    &__textarea {
+      font-family: $font-text;
+      width: 80%;
+      border-radius: 2px;
+      border: 1px solid $color-text-row-ext-icons;
+      font-size: 1.4rem;
+      padding: 5px;
+      height: 55px;
+      resize: none;
+      @include tablet {
+        height: 80px;
+        width: 90%;
+        margin-bottom: 20px;
+      }
+    }
+    &__textarea::placeholder {
+      font-size: 1.3rem;
+      color: #4a4a49;
+    }
+    &__button {
+      background: transparent;
+      border: none;
+      align-self: flex-start;
+      cursor: pointer;
+      display: flex;
+      padding: 0;
+      margin: 0;
+      font-size: 3rem;
+      color: $color-msg-success;
+      @include tablet {
+        font-size: 3.3rem;
+      }
+    }
+  }
+}
