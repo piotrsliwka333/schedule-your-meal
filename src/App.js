@@ -36,7 +36,7 @@ export const App = () => {
 				{/*<Route path={'/application/schedule'} component={ApplicationSchedule}/>*/}
 				<Route exact path={'/schedule-your-meal'} component={Home}/>
 				<Route path={'/schedule-your-meal/application/login'} render={() => (
-					!logged ? (<ApplicationLogin loginFn={handleLoggedIn}  />) : (<Redirect to='/schedule-your-meal/application/desktop'/>)
+					!logged ? (<ApplicationLogin loginFn={handleLoggedIn}  />) : (<Redirect to='/schedule-your-meal/application/recipes'/>)
 				)}/>
 				<Route path={'/schedule-your-meal/application/desktop'} render={() => (
 					logged ? (<ApplicationDesktop/>) : (<Redirect to='/schedule-your-meal/application/login'/>)

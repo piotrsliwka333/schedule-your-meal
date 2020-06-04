@@ -1,0 +1,144 @@
+.recipes__description {
+  .description-form {
+
+    &__box {
+      position: relative;
+      padding: 5px 5px 5px 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @include tablet {
+        padding: 5px 20px;
+      }
+      .description-form__title {
+        align-self: flex-end;
+        font-size: 2rem;
+        color: $color-button-highlight-headers;
+        font-weight: 600;
+        @include tablet {
+          font-size: 2.5rem;
+        }
+      }
+
+      .description-form__button {
+        font-size: 1.2rem;
+        width: 120px;
+        padding: 5px 5px;
+        font-weight: bold;
+        border: none;
+        box-shadow: none;
+        &:hover {
+          background-color: lighten($color-button-highlight-headers,5%);
+
+        }
+      }
+
+      .description-form__label {
+        align-self: flex-start;
+        width: 43%;
+        font-size: 1.5rem;
+        color: $color-side-panel;
+        @include tablet {
+          width: 25%;
+          font-size: 1.8rem;
+        }
+        @include desktop {
+          font-size: 2.3rem;
+          width: 20%;
+        }
+      }
+
+      .description-form__input {
+        padding: 5px;
+        border-radius: 2px;
+        border: 1px solid $color-text-row-ext-icons;
+        font-size: 1.4rem;
+        width: 55%;
+        @include tablet {
+          padding: 10px 5px;
+          width: 70%;
+        }
+        @include desktop {
+          width: 75%;
+        }
+      }
+      .description-form__input::placeholder {
+        font-size: 1.3rem;
+        color: #4a4a49;
+      }
+
+      .description-form__textarea {
+        border-radius: 2px;
+        border: 1px solid $color-text-row-ext-icons;
+        font-size: 1.4rem;
+        padding: 5px;
+        width: 55%;
+        height: 55px;
+        resize: none;
+        @include tablet {
+          padding: 10px 5px;
+          height: 70px;
+          width: 70%;
+        }
+        @include desktop {
+          width: 75%;
+        }
+
+
+      }
+      .description-form__textarea::placeholder {
+        font-size: 1.3rem;
+        color: #4a4a49;
+      }
+
+      .error {
+        border: 1px solid tomato;
+
+      }
+
+      .error-message {
+        padding-right: 10px;
+        text-align: right;
+        width: 70%;
+        top: 37px;
+        left: 50%;
+        transform: translateX(-30%);
+        position: absolute;
+        color: tomato;
+        font-size: 1.2rem;
+        font-weight: bold;
+        @include tablet {
+          top: 46px;
+        }
+      }
+      .error-message__textarea {
+        padding-right: 10px;
+        text-align: right;
+        width: 70%;
+        top: 60px;
+        left: 50%;
+        transform: translateX(-30%);
+        position: absolute;
+        color: tomato;
+        font-size: 1.2rem;
+        font-weight: bold;
+        @include tablet {
+          top: 75px;
+        }
+      }
+
+    }
+    &__box:nth-of-type(2) {
+      margin-bottom: 10px;
+    }
+
+    &__box:first-of-type {
+      padding: 10px 0 5px 0;
+      border-bottom: 2px solid $color-text-row-ext-icons;
+      @include tablet {
+        padding-top: 20px;
+      }
+
+    }
+  }
+}
