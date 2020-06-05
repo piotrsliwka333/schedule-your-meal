@@ -1,11 +1,9 @@
 import React, {useState} from "react";
 
 export const ApplicationRecipesElement = (props) => {
-	const {text,editElement,deleteElement,elementToDel,newRecipe,saveEdited} = props
+	const {saveEditedElement,deleteElement,text,name,array,elementToEditOrDelete,arrayToEdit} = props
 	const [disabled,setDisabled] = useState(true)
-	const [editedArray,setEditedArray] = useState(newRecipe)
 	const [startInputValue,setStartInputValue] = useState(text)
-
 	const handleEdit = (e) => {
 		e.preventDefault();
 		setDisabled(false)
@@ -18,11 +16,20 @@ export const ApplicationRecipesElement = (props) => {
 		}
 	}
 
-	const handleSaveAndSetDisabled = (e,newRecipe,elementToDel,startInputValue) => {
-
-		saveEdited(e,newRecipe,elementToDel,startInputValue);
-		setDisabled(true)
+	const handleCheckDeleteElement = (e,array,elementToDelete,editArray) => {
+		if(typeof deleteElement === 'function') {
+			deleteElement(e,array,elementToDelete,editArray)
+		}
 	}
+
+	const handleCheckSaveEditedElement = (e,array,elementToSave,newName,arrayToEdit) => {
+		if (typeof saveEditedElement === 'function') {
+			saveEditedElement(e,array,elementToSave,newName,arrayToEdit);
+			setDisabled(true)
+		}
+	}
+
+
 
 
 	const style = {
@@ -37,10 +44,10 @@ export const ApplicationRecipesElement = (props) => {
 				<button onClick={e => handleEdit(e)} className='recipes-element__edit-button '>
 					<i className="far fa-edit"/>
 				</button>
-				<button className='recipes-element__delete-button ' onClick={e => deleteElement(e,newRecipe.instructions,elementToDel)}>
+				<button onClick={e => handleCheckDeleteElement(e,array,elementToEditOrDelete,arrayToEdit)} className='recipes-element__delete-button '>
 					<i className="far fa-trash-alt"/>
 				</button>
-				{!disabled && <button onClick={e => handleSaveAndSetDisabled(e,newRecipe,elementToDel,startInputValue)} className='recipes-element__save-button'><i className="fas fa-save"/></button>}
+				{!disabled && <button name={name} onClick={e => handleCheckSaveEditedElement(e,array,elementToEditOrDelete,startInputValue,arrayToEdit)}  className='recipes-element__save-button'><i className="fas fa-save"/></button>}
 			</div>
 		</li>
 	)

@@ -25,8 +25,8 @@ export const ApplicationRecipes = () => {
 
 	// Instructions state
 
-	const [newRecipeInstruction,setNewRecipeInstruction] = useState('')
-	const [newRecipeIngredient,setNewRecipeIngredient] = useState('')
+	const [newRecipeInstruction, setNewRecipeInstruction] = useState('')
+	const [newRecipeIngredient, setNewRecipeIngredient] = useState('')
 
 	const handleAddNewRecipe = (e, newRecipeTitle, newRecipeDescription, newRecipeInstructions, newRecipeIngredients) => {
 		e.preventDefault();
@@ -37,11 +37,11 @@ export const ApplicationRecipes = () => {
 			setNewRecipeDescriptionError(true)
 		}
 		if (newRecipeInstructions.length === 0) {
-			setNewRecipeInstructionsError(true)
+			setNewRecipeInstructionError(true)
 		}
 		if (newRecipeIngredients.length === 0) {
-			setNewRecipeIngredientsError(true)
-		} else {
+			setNewRecipeIngredientError(true)
+		} else if(newRecipeIngredients.length > 0 && newRecipeInstructions.length > 0 && (newRecipeDescription.length > 0 && newRecipeDescription.length <= 150) && (newRecipeTitle.length > 0 && newRecipeTitle.length <= 50)) {
 			setNewRecipeTitleError(false)
 			setNewRecipeDescriptionError(false)
 			setNewRecipeInstructionsError(false)
@@ -104,14 +104,11 @@ export const ApplicationRecipes = () => {
 		}
 	}
 
-
-
-
 	//validation for newInstruction on Input
 	const handleNewInstructionValidation = (e) => {
 		e.preventDefault();
-		const {name,value} = e.target;
-		if(value.length === 0 || value.length > 150) {
+		const {name, value} = e.target;
+		if (value.length === 0 || value.length > 150) {
 			setNewRecipeInstruction(value)
 			setNewRecipeInstructionError(true)
 		} else {
@@ -122,17 +119,17 @@ export const ApplicationRecipes = () => {
 	}
 
 	//validation of adding newInstruction
-	const handleAddNewInstruction = (e,newInstructionValue,newRecipeInstructions) => {
+	const handleAddNewInstruction = (e, newInstructionValue, newRecipeInstructions) => {
 		e.preventDefault();
 		let randomNumber = Math.floor(Math.random() * 10000 + 10)
-		if(newInstructionValue.length === 0 || newInstructionValue.length > 150) {
+		if (newInstructionValue.length === 0 || newInstructionValue.length > 150) {
 			setNewRecipeInstructionError(true)
 		} else {
 			setNewRecipeInstructionError(false)
 			setNewRecipe(prevState => {
 				return {
 					...prevState,
-					instructions: [...newRecipeInstructions, {name:newInstructionValue, id: randomNumber}]
+					instructions: [...newRecipeInstructions, {name: newInstructionValue, id: randomNumber}]
 				}
 			})
 			setNewRecipeInstruction('')
@@ -143,72 +140,71 @@ export const ApplicationRecipes = () => {
 	//New IngredientValidation
 	const handleNewIngredientValidation = (e) => {
 		e.preventDefault();
-		const {name,value} = e.target;
-		if(value.length === 0 || value.length > 50) {
+		const {name, value} = e.target;
+		if (value.length === 0 || value.length > 50) {
 			setNewRecipeIngredient(value)
 			setNewRecipeIngredientError(true)
 		} else {
 			setNewRecipeIngredient(value)
 			setNewRecipeIngredientError(false)
 		}
-
 	}
 
-	const handleAddNewIngredient = (e,newIngredientValue,newRecipeIngredients) => {
+
+	// validation of adding new Ingredient different validation coz new instruction can has 150 signs new ingredient only 50
+	const handleAddNewIngredient = (e, newIngredientValue, newRecipeIngredients) => {
 		e.preventDefault();
-		if(newIngredientValue.length === 0 || newIngredientValue.length > 50) {
+		let randomNumber = Math.floor(Math.random() * 10000 + 10)
+		if (newIngredientValue.length === 0 || newIngredientValue.length > 50) {
 			setNewRecipeIngredientError(true)
 		} else {
 			setNewRecipeIngredientError(false)
 			setNewRecipe(prevState => {
 				return {
 					...prevState,
-					ingredients: [...newRecipeIngredients,newIngredientValue]
+					ingredients: [...newRecipeIngredients, {name: newIngredientValue, id: randomNumber}]
 				}
 			})
 			setNewRecipeIngredient('')
 		}
 	}
 
-	//delete instruction
-	const handleDeleteInstruction = (e,newRecipeInstructions,elementToDelete) => {
-		e.preventDefault();
-		const newArray = newRecipeInstructions.filter((element) => element.id !== elementToDelete)
-		setNewRecipe(prevState => {
+	//Delete Element
 
+	const handleDeleteElement = (e, array, elementToDelete, arrayToEdit) => {
+		e.preventDefault()
+		let newArray = array.filter(element => element.id !== elementToDelete)
+
+		setNewRecipe(prevState => {
 			return {
 				...prevState,
-				instructions: newArray
+				[arrayToEdit]: newArray
 			}
 		})
+
 	}
 
-	//Save Edited Instruction
+	//EditElement
 
-	const handleSaveEditInstruction = (e,newRecipes,elementToSave,newName) => {
+	const handleSaveEditedElement = (e, array, elementToSave, newName, arrayToEdit) => {
 		e.preventDefault();
-		const newArray = newRecipes.instructions.map(element => {
-			console.log(element.id )
-			console.log(elementToSave)
-			if(element.id === elementToSave) {
+		const newArray = array.map(element => {
+
+			if (element.id === elementToSave) {
 				element.name = newName
 				return element
 			}
 			return element
 		})
-		console.log(newArray)
+
 		setNewRecipe(prevState => {
 
 			return {
 				...prevState,
-				instructions: newArray
+				[arrayToEdit]: newArray
 			}
 		})
 	}
-
-
-
-
 
 
 	return (
@@ -217,15 +213,27 @@ export const ApplicationRecipes = () => {
 				<Container fluid className='pr-4 pl-4 pr-md-5 pl-md-5 h-100'>
 					<Row className='h-100'>
 						<ApplicationRecipesDescription instructionsValue={newRecipe.instructions}
-						                               ingredientsValue={newRecipe.ingredients} addNewRecipe={handleAddNewRecipe}
+						                               ingredientsValue={newRecipe.ingredients}
+						                               addNewRecipe={handleAddNewRecipe}
 						                               titleValue={newRecipe.title}
 						                               descriptionValue={newRecipe.description}
 						                               onTitleValidation={handleRecipeTittleValidation}
 						                               titleError={newRecipeTitleError}
 						                               onDescriptionValidation={handleRecipeDescriptionValidation}
 						                               descriptionError={newRecipeDescriptionError}/>
-						<ApplicationRecipesInstructions saveEdited={handleSaveEditInstruction} deleteInstruction={handleDeleteInstruction} newRecipe={newRecipe} addNewInstruction={handleAddNewInstruction} newInstructionError={newRecipeInstructionError}  newInstructionValue={newRecipeInstruction} instructionValidation={handleNewInstructionValidation}/>
-						<ApplicationRecipesIngredients newRecipe={newRecipe} addNewIngredient={handleAddNewIngredient} newIngredientError={newRecipeIngredientError}  newIngredientValue={newRecipeIngredient} ingredientValidation={handleNewIngredientValidation}/>
+						<ApplicationRecipesInstructions saveEditedElement={handleSaveEditedElement}
+						                                deleteElement={handleDeleteElement}
+						                                addNewInstruction={handleAddNewInstruction} newRecipe={newRecipe}
+						                                newInstructionError={newRecipeInstructionError}
+						                                newInstructionValue={newRecipeInstruction}
+						                                instructionValidation={handleNewInstructionValidation}/>
+						<ApplicationRecipesIngredients saveEditedElement={handleSaveEditedElement}
+						                               deleteElement={handleDeleteElement}
+						                               addNewIngredient={handleAddNewIngredient}
+						                               newRecipe={newRecipe}
+						                               newIngredientError={newRecipeIngredientError}
+						                               newIngredientValue={newRecipeIngredient}
+						                               ingredientValidation={handleNewIngredientValidation}/>
 					</Row>
 				</Container>
 			</section>
