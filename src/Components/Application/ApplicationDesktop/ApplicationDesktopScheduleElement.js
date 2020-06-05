@@ -1,5 +1,4 @@
 import React from "react";
-import {Col} from "react-bootstrap";
 
 export const ApplicationDesktopScheduleElement = (props) => {
 	const {day,breakfast,secondBreakfast,soup,dinner,supper} = props

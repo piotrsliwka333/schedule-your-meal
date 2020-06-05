@@ -17,8 +17,6 @@ export const ApplicationRecipes = () => {
 	// Errors state
 	const [newRecipeTitleError, setNewRecipeTitleError] = useState(false)
 	const [newRecipeDescriptionError, setNewRecipeDescriptionError] = useState(false)
-	const [newRecipeInstructionsError, setNewRecipeInstructionsError] = useState(false)
-	const [newRecipeIngredientsError, setNewRecipeIngredientsError] = useState(false)
 	const [newRecipeInstructionError, setNewRecipeInstructionError] = useState(false)
 	const [newRecipeIngredientError, setNewRecipeIngredientError] = useState(false)
 
@@ -41,11 +39,10 @@ export const ApplicationRecipes = () => {
 		}
 		if (newRecipeIngredients.length === 0) {
 			setNewRecipeIngredientError(true)
-		} else if(newRecipeIngredients.length > 0 && newRecipeInstructions.length > 0 && (newRecipeDescription.length > 0 && newRecipeDescription.length <= 150) && (newRecipeTitle.length > 0 && newRecipeTitle.length <= 50)) {
+		} else if (newRecipeIngredients.length > 0 && newRecipeInstructions.length > 0 && (newRecipeDescription.length > 0 && newRecipeDescription.length <= 150) && (newRecipeTitle.length > 0 && newRecipeTitle.length <= 50)) {
 			setNewRecipeTitleError(false)
 			setNewRecipeDescriptionError(false)
-			setNewRecipeInstructionsError(false)
-			setNewRecipeIngredientsError(false)
+
 
 			console.log('dane wysłane :)')
 			setNewRecipe({
@@ -107,7 +104,7 @@ export const ApplicationRecipes = () => {
 	//validation for newInstruction on Input
 	const handleNewInstructionValidation = (e) => {
 		e.preventDefault();
-		const {name, value} = e.target;
+		const {value} = e.target;
 		if (value.length === 0 || value.length > 150) {
 			setNewRecipeInstruction(value)
 			setNewRecipeInstructionError(true)
@@ -115,7 +112,6 @@ export const ApplicationRecipes = () => {
 			setNewRecipeInstruction(value)
 			setNewRecipeInstructionError(false)
 		}
-
 	}
 
 	//validation of adding newInstruction
@@ -134,13 +130,12 @@ export const ApplicationRecipes = () => {
 			})
 			setNewRecipeInstruction('')
 		}
-
 	}
 
 	//New IngredientValidation
 	const handleNewIngredientValidation = (e) => {
 		e.preventDefault();
-		const {name, value} = e.target;
+		const {value} = e.target;
 		if (value.length === 0 || value.length > 50) {
 			setNewRecipeIngredient(value)
 			setNewRecipeIngredientError(true)
