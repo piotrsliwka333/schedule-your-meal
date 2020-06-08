@@ -2,27 +2,40 @@ import React, {useEffect, useState} from "react";
 import {Logo} from "./Logo";
 import appBcg from '../../images/image.png'
 import {NavLink} from "react-router-dom";
+import * as firebase from "firebase";
+import {auth} from "firebase";
 
 const style = {
 	backgroundImage: `url('${appBcg}')`
 }
 
 export const ApplicationTemplate = (props) => {
+	const [logged,setLogged] = useState(false)
 	const [openMenu,setOpenMenu] = useState( false)
 	const [name,setName] = useState('Imie')
 
-	useEffect(()=> {
-		if(localStorage.getItem('name') !== null) {
-			setName(localStorage.getItem('name'))
-		} else {
-			setName('Imię')
-		}
-	},[localStorage.getItem('name')])
-
+	// hamburger logic
 	const handleOpenMenu = (e) => {
 		e.preventDefault();
 		setOpenMenu(!openMenu)
 	}
+
+	//logout logic
+	const handleLogOut = (e) => {
+		e.preventDefault();
+		firebase.auth().signOut().then(r => console.log(r)).catch(err => console.log(err));
+	}
+
+	useEffect(() => {
+		firebase.auth().onAuthStateChanged(firebaseUser => {
+			if(firebaseUser) {
+				setLogged(true)
+				setName(firebaseUser.email)
+			} else {
+				setLogged(false)
+			}
+		})
+	},[])
 
 	return (
 		<>
@@ -30,10 +43,13 @@ export const ApplicationTemplate = (props) => {
 				<Logo/>
 				<div className='user-box'>
 					<div className='user-wrapper'>
+						{logged && <button className='user-box__logout' onClick={e => handleLogOut(e)}>
+							<i className="fas fa-power-off"/>
+						</button>}
 						<span className='user-box__name'>{name}</span>
 						<span className='user-box__icon'>
 						<i className="far fa-user-circle"/>
-					</span>
+						</span>
 					</div>
 					<button onClick={e => handleOpenMenu(e)} className='menu-toggle'>
 						<i className="fas fa-bars"/>

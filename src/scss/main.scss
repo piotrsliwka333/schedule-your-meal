@@ -34,7 +34,11 @@
 // APPLICATION
 @import "elements/Templates/ApplicationTemplate";
 //ApplicationLogin
-@import "elements/Application/ApplicationLogin";
+@import "elements/Application/ApplicationLogin/ApplicationLogin";
+//ApplicationLoginForm
+@import "elements/Application/ApplicationLogin/ApplicationLoginForm";
+//ApplicationRegisterForm
+@import "elements/Application/ApplicationLogin/ApplicationRegisterForm";
 //ApplicationDesktop
 @import "elements/Application/ApplicationDesktop/ApplicationDesktop";
 //ApplicationDesktopButtons

@@ -1,0 +1,24 @@
+.register-form {
+  position: relative;
+
+  .email-error {
+    position: absolute;
+    top: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .password-error {
+    position: absolute;
+    top: 155px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .repeat-password-error {
+    position: absolute;
+    top: 240px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+}

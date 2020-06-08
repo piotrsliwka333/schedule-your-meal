@@ -4,9 +4,10 @@ import {Container, Row} from "react-bootstrap";
 import {ApplicationRecipesDescription} from "./ApplicationRecipesDescription";
 import {ApplicationRecipesInstructions} from "./ApplicationRecipesInstructions";
 import {ApplicationRecipesIngredients} from "./ApplicationRecipesIngredients";
+import * as firebase from "firebase";
 
 
-export const ApplicationRecipes = () => {
+export const ApplicationRecipes = data => {
 	const [newRecipe, setNewRecipe] = useState({
 		title: '',
 		description: '',
@@ -26,6 +27,12 @@ export const ApplicationRecipes = () => {
 	const [newRecipeInstruction, setNewRecipeInstruction] = useState('')
 	const [newRecipeIngredient, setNewRecipeIngredient] = useState('')
 
+
+	//References recipes Collections
+	let recipesRef = firebase.database().ref('recipes')
+	let db = firebase.firestore()
+	let user = firebase.auth().currentUser
+
 	const handleAddNewRecipe = (e, newRecipeTitle, newRecipeDescription, newRecipeInstructions, newRecipeIngredients) => {
 		e.preventDefault();
 		if (newRecipeTitle.length <= 0 || newRecipeTitle.length > 50) {
@@ -42,15 +49,19 @@ export const ApplicationRecipes = () => {
 		} else if (newRecipeIngredients.length > 0 && newRecipeInstructions.length > 0 && (newRecipeDescription.length > 0 && newRecipeDescription.length <= 150) && (newRecipeTitle.length > 0 && newRecipeTitle.length <= 50)) {
 			setNewRecipeTitleError(false)
 			setNewRecipeDescriptionError(false)
+			let newRecipeRef = recipesRef.push();
+			// db.collection('users').add(newRecipe).then(r => console.log(r))
+			db.collection('users').doc(user.uid).collection('recipes').add(newRecipe).then(data => console.log(data))
+			newRecipeRef.set(newRecipe).then(r => {
 
-
-			console.log('dane wysłane :)')
-			setNewRecipe({
-				title: '',
-				description: '',
-				instructions: [],
-				ingredients: []
-			})
+				console.log('dane wysłane :)')
+				setNewRecipe({
+					title: '',
+					description: '',
+					instructions: [],
+					ingredients: []
+				})
+			});
 		}
 	}
 

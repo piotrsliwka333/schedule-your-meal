@@ -26,7 +26,7 @@
     }
 
     .user-wrapper {
-      margin-left: 30px;
+      margin-left: 10px;
       display: flex;
       align-items: center;
       @include tablet {
@@ -35,21 +35,40 @@
     }
 
     &__name {
-      font-size: 2.5rem;
+      margin: 0 10px 0 20px;
+      font-size: 1.5rem;
       color: $color-bcg;
       @include tablet {
-        font-size: 3rem;
+        font-size: 2rem;
+      }
+      @include desktop {
+        font-size: 2.5rem;
       }
     }
 
     &__icon {
-      margin: 0 50px 0 20px;
+      display: block;
       font-size: 4.2rem;
       color: $color-button-highlight-headers;
+      @include tablet {
+        margin-right: 30px;
+      }
       @include desktop {
         font-size: 5rem;
       }
     }
+    &__logout {;
+     background: transparent;
+      border: none;
+      border-radius: 50%;
+      font-size: 2rem;
+      color: $color-button-highlight-headers;
+      @include tablet {
+
+      }
+
+    }
+
     .menu-toggle {
       margin-right: 10px;
       background-color: transparent;
