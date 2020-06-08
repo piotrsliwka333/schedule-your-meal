@@ -59,6 +59,7 @@ export const ApplicationRecipes = data => {
 
 				console.log('dane wysłane :)')
 				setNewRecipe({
+					id: '',
 					title: '',
 					description: '',
 					instructions: [],
