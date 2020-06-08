@@ -1,13 +1,16 @@
 import React, {useState} from "react";
 import {ApplicationTemplate} from "../../Templates/ApplicationTemplate";
-import {Container, Row} from "react-bootstrap";
+import * as firebase from "firebase";
+import {ApplicationRecipesList} from "./ApplicationRecipesList";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 import {ApplicationRecipesDescription} from "./ApplicationRecipesDescription";
 import {ApplicationRecipesInstructions} from "./ApplicationRecipesInstructions";
 import {ApplicationRecipesIngredients} from "./ApplicationRecipesIngredients";
-import * as firebase from "firebase";
 
 
 export const ApplicationRecipes = data => {
+	const [recipesList,setRecipesList] = useState(true)
 	const [newRecipe, setNewRecipe] = useState({
 		title: '',
 		description: '',
@@ -49,8 +52,8 @@ export const ApplicationRecipes = data => {
 		} else if (newRecipeIngredients.length > 0 && newRecipeInstructions.length > 0 && (newRecipeDescription.length > 0 && newRecipeDescription.length <= 150) && (newRecipeTitle.length > 0 && newRecipeTitle.length <= 50)) {
 			setNewRecipeTitleError(false)
 			setNewRecipeDescriptionError(false)
+			setRecipesList(true)
 			let newRecipeRef = recipesRef.push();
-			// db.collection('users').add(newRecipe).then(r => console.log(r))
 			db.collection('users').doc(user.uid).collection('recipes').add(newRecipe).then(data => console.log(data))
 			newRecipeRef.set(newRecipe).then(r => {
 
@@ -211,11 +214,17 @@ export const ApplicationRecipes = data => {
 			}
 		})
 	}
+	// this button will hide/show recipes list (when user click button add new recipe when will be on recipe list it will move him to add new recipe section
+	const handleRecipeList = (e) => {
+		e.preventDefault()
+		setRecipesList(false)
+	}
 
 
 	return (
 		<ApplicationTemplate>
 			<section className='recipes'>
+				{!recipesList &&
 				<Container fluid className='pr-4 pl-4 pr-md-5 pl-md-5 h-100'>
 					<Row className='h-100'>
 						<ApplicationRecipesDescription instructionsValue={newRecipe.instructions}
@@ -241,7 +250,8 @@ export const ApplicationRecipes = data => {
 						                               newIngredientValue={newRecipeIngredient}
 						                               ingredientValidation={handleNewIngredientValidation}/>
 					</Row>
-				</Container>
+				</Container>}
+				{recipesList && <ApplicationRecipesList moveToAddNewRecipeSection={handleRecipeList}/>}
 			</section>
 		</ApplicationTemplate>
 	)

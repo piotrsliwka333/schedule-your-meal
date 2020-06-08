@@ -1,0 +1,65 @@
+.list-element {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $color-text-row-ext-icons;
+  padding-bottom: 5px;
+  @include tablet {
+    padding: 10px 0;
+  }
+  .list-element__text {
+    padding: 0;
+    margin: 0;
+    color: $color-text-row-ext-icons;
+    font-size: 1.2rem;
+    @include tablet {
+      font-size: 1.6rem;
+    }
+  }
+
+  .name {
+    width: 20%;
+    @include tablet {
+      width: 30%;
+    }
+    @include desktop {
+      width: 20%;
+    }
+  }
+
+  .description {
+    width: 45%;
+    @include tablet {
+      display: block;
+      width: 50%;
+    }
+    @include desktop {
+      width: 65%;
+    }
+  }
+
+  .action {
+    width: 20%;
+    font-size: 1.7rem;
+    @include tablet {
+      width: 15%;
+      font-size: 2rem;
+    }
+    @include desktop {
+      width: 10%;
+    }
+
+    .list-element__button {
+      background: transparent;
+      border: none;
+    }
+
+    .delete {
+      color: $color-trash-icon;
+    }
+
+    .edit {
+      color: $color-msg-warning;
+    }
+
+  }
+}
