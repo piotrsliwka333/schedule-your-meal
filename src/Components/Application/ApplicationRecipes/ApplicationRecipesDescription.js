@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Col} from "react-bootstrap";
+import * as firebase from "firebase";
 
 export const ApplicationRecipesDescription = (props) => {
-	const {addNewRecipe, instructionsValue, ingredientsValue, titleValue, descriptionValue, onTitleValidation, onDescriptionValidation, descriptionError, titleError} = props
+	const {handleSaveEditedRecipes,newRecipe,newOrEdit,addNewRecipe, instructionsValue, ingredientsValue, titleValue, descriptionValue, onTitleValidation, onDescriptionValidation, descriptionError, titleError} = props
 
+	const [userUid,setUserUid] = useState('')
 	const handleCheckTitleValidation = (e) => {
 		if (typeof onTitleValidation === 'function') {
 			onTitleValidation(e);
@@ -16,19 +18,26 @@ export const ApplicationRecipesDescription = (props) => {
 		}
 	}
 
-	const handleCheckAddNewRecipe = (e, title, description, instructions, ingredients) => {
-		if (typeof addNewRecipe === 'function') {
+	const handleCheckAddNewRecipe = (e, title, description, instructions, ingredients,userUid,elementId) => {
+		if (typeof addNewRecipe === 'function' && newOrEdit === 'new') {
 			addNewRecipe(e, title, description, instructions, ingredients);
+		} else if(typeof handleSaveEditedRecipes === 'function' && newOrEdit !== 'new') {
+			handleSaveEditedRecipes(e,title,description,instructions,ingredients,userUid,elementId)
 		}
 	}
+
+	useEffect(()=> {
+		let user = firebase.auth().currentUser
+		setUserUid(user.uid)
+	},[])
 
 	return (
 		<Col className='recipes__description col-12'>
 			<form
-				onSubmit={e => handleCheckAddNewRecipe(e, titleValue, descriptionValue, instructionsValue, ingredientsValue)}
+				onSubmit={e => handleCheckAddNewRecipe(e, titleValue, descriptionValue, instructionsValue, ingredientsValue,userUid,newRecipe.id)}
 				className='description-form'>
 				<div className='description-form__box'>
-					<h1 className='description-form__title highlight'>Nowy Przepis</h1>
+					<h1 className='description-form__title highlight'>{newOrEdit === 'new' ? 'Nowy Przepis' : 'Edytuj przepis'}</h1>
 					<button type='submit' className='description-form__button home-button'>Zapisz zamknij</button>
 				</div>
 				<div className='description-form__box'>

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {ApplicationTemplate} from "../../Templates/ApplicationTemplate";
 import * as firebase from "firebase";
 import {ApplicationRecipesList} from "./ApplicationRecipesList";
@@ -12,6 +12,7 @@ import {ApplicationRecipesIngredients} from "./ApplicationRecipesIngredients";
 export const ApplicationRecipes = data => {
 	const [recipesList,setRecipesList] = useState(true)
 	const [newRecipe, setNewRecipe] = useState({
+		id: '',
 		title: '',
 		description: '',
 		instructions: [],
@@ -29,6 +30,10 @@ export const ApplicationRecipes = data => {
 
 	const [newRecipeInstruction, setNewRecipeInstruction] = useState('')
 	const [newRecipeIngredient, setNewRecipeIngredient] = useState('')
+
+	// here we will change if in recipe description will change name from new recipe on edit recipe
+	const [newOrEdit,setNewOrEdit] = useState('new')
+	const [edited,setEdited] = useState(true)
 
 
 	//References recipes Collections
@@ -221,6 +226,61 @@ export const ApplicationRecipes = data => {
 		setRecipesList(false)
 	}
 
+	//handle edit whole recipe after click this button user will be able to edit his saved recipe include title,description,ingredients and instructions
+	const handleEditRecipe = (e,idOfRecipe,userId) => {
+		e.preventDefault();
+
+		db.collection('users').doc(userId).collection('recipes').doc(idOfRecipe).get()
+			.then(data => {
+				let dataToDisplay = data.data()
+				dataToDisplay.id = data.id;
+				setNewRecipe(dataToDisplay)
+				setRecipesList(false)
+				setNewOrEdit('edit')
+			})
+			.catch(e => console.log(e))
+	}
+
+
+	// here we save recipe which was edited
+	const handleSaveEditedRecipe = (e, newRecipeTitle, newRecipeDescription, newRecipeInstructions, newRecipeIngredients,userId,elementId) => {
+		e.preventDefault();
+		if (newRecipeTitle.length <= 0 || newRecipeTitle.length > 50) {
+			setNewRecipeTitleError(true)
+		}
+		if (newRecipeDescription.length <= 0 || newRecipeDescription.length > 150) {
+			setNewRecipeDescriptionError(true)
+		}
+		if (newRecipeInstructions.length === 0) {
+			setNewRecipeInstructionError(true)
+		}
+		if (newRecipeIngredients.length === 0) {
+			setNewRecipeIngredientError(true)
+		} else if (newRecipeIngredients.length > 0 && newRecipeInstructions.length > 0 && (newRecipeDescription.length > 0 && newRecipeDescription.length <= 150) && (newRecipeTitle.length > 0 && newRecipeTitle.length <= 50)) {
+			setNewRecipeTitleError(false)
+			setNewRecipeDescriptionError(false)
+			setRecipesList(true)
+			let newRecipeRef = recipesRef.push();
+			db.collection('users').doc(userId).collection('recipes').doc(elementId).set(newRecipe).then(data => {
+				setNewOrEdit('new')
+
+
+			})
+
+			newRecipeRef.set(newRecipe).then(r => {
+
+				console.log('dane wysłane :)')
+				setNewRecipe({
+					id: '',
+					title: '',
+					description: '',
+					instructions: [],
+					ingredients: []
+				})
+			});
+		}
+	}
+
 
 	return (
 		<ApplicationTemplate>
@@ -228,7 +288,7 @@ export const ApplicationRecipes = data => {
 				{!recipesList &&
 				<Container fluid className='pr-4 pl-4 pr-md-5 pl-md-5 h-100'>
 					<Row className='h-100'>
-						<ApplicationRecipesDescription instructionsValue={newRecipe.instructions}
+						<ApplicationRecipesDescription newRecipe={newRecipe} handleSaveEditedRecipes={handleSaveEditedRecipe} newOrEdit={newOrEdit} instructionsValue={newRecipe.instructions}
 						                               ingredientsValue={newRecipe.ingredients}
 						                               addNewRecipe={handleAddNewRecipe}
 						                               titleValue={newRecipe.title}
@@ -252,7 +312,7 @@ export const ApplicationRecipes = data => {
 						                               ingredientValidation={handleNewIngredientValidation}/>
 					</Row>
 				</Container>}
-				{recipesList && <ApplicationRecipesList moveToAddNewRecipeSection={handleRecipeList}/>}
+				{recipesList && <ApplicationRecipesList editExistingRecipe={handleEditRecipe} moveToAddNewRecipeSection={handleRecipeList}/>}
 			</section>
 		</ApplicationTemplate>
 	)

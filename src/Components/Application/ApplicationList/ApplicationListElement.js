@@ -9,12 +9,18 @@ export const ApplicationListElement = (props) => {
 		}
 	}
 
+	const handleCheckEditElement = (e,elementId,userUid) => {
+		if(typeof editElement === 'function') {
+			editElement(e,elementId,userUid)
+		}
+	}
+
 	return(
 		<div className='list-element'>
 			<p className='list-element__text name'>{name}</p>
 			<p className='list-element__text description'>{description}</p>
 			<div className='list-element__action-box action'>
-				<button className='list-element__button edit'>
+				<button onClick={e => handleCheckEditElement(e,elementToEditOrDelete,userUid)} className='list-element__button edit'>
 					<i className="far fa-edit"/>
 				</button>
 				<button onClick={e => handleCheckDeleteElement(e,elementToEditOrDelete,userUid)} className='list-element__button delete'>

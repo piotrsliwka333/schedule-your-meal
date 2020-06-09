@@ -32,6 +32,7 @@ export const ApplicationRecipesElement = (props) => {
 
 
 
+
 	const style = {
 		border: !disabled ? '1px solid gray' : 'none',
 		background: 'transparent',
