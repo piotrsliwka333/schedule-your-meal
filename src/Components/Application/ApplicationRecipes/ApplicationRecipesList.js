@@ -13,7 +13,6 @@ export const ApplicationRecipesList = (props) => {
 	const [recipes,setRecipes] = useState(false)
 	const [userUid,setUserUid] = useState('')
 	const [deleted,setDeleted] = useState(false);
-	const [data,setData] = useState(false)
 	// when we press delete button it need to load fresh data so after every click it will change on a different value
 	let db = firebase.firestore()
 
@@ -31,15 +30,18 @@ export const ApplicationRecipesList = (props) => {
 						console.log(doc.data())
 						dataToSet.id = doc.id
 						newArray.push(dataToSet)
+
 					})
 					setRecipes(newArray)
-					setData(true)
 				})
 			}
 			else {
 			}
 		},100)
 
+		return () => {
+			clearTimeout(timeOut)
+		}
 
 	},[deleted])
 
