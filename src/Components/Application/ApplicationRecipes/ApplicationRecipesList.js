@@ -10,7 +10,7 @@ import * as firebase from "firebase";
 
 export const ApplicationRecipesList = (props) => {
 	const {moveToAddNewRecipeSection,editExistingRecipe} = props
-	const [recipes,setRecipes] = useState(false)
+	const [recipes,setRecipes] = useState([])
 	const [userUid,setUserUid] = useState('')
 	const [deleted,setDeleted] = useState(false);
 	// when we press delete button it need to load fresh data so after every click it will change on a different value
@@ -20,29 +20,19 @@ export const ApplicationRecipesList = (props) => {
 	useEffect(() => {
 		let user = firebase.auth().currentUser
 		setUserUid(user.uid)
-		const timeOut = setTimeout(() => {
-			if(user) {
-				db.collection('users').doc(user.uid).collection('recipes').get().then(snapshot => {
-					let newArray = []
 
-					snapshot.docs.forEach(doc => {
-						let dataToSet = doc.data()
-						console.log(doc.data())
-						dataToSet.id = doc.id
-						newArray.push(dataToSet)
+		//real time event listener from firestore
+		db.collection('users').doc(user.uid).collection('recipes').onSnapshot(snapshot => {
 
-					})
-					setRecipes(newArray)
-				})
-			}
-			else {
-			}
-		},100)
+			let changes = snapshot.docChanges()
+			 setRecipes( changes.map(change => {
+				let dataToSeT = change.doc.data()
+				dataToSeT.id = change.doc.id
+				return dataToSeT
 
-		return () => {
-			clearTimeout(timeOut)
-		}
+			}))
 
+		})
 	},[deleted])
 
 
@@ -50,11 +40,8 @@ export const ApplicationRecipesList = (props) => {
 
 	const handleDeleteElement = (e,idToDelete,userId) => {
 		e.preventDefault()
-		console.log(idToDelete)
-		console.log(userId)
 		db.collection('users').doc(userId).collection('recipes').doc(idToDelete).delete().then(data => {
 			setDeleted(!deleted)
-
 		});
 	}
 

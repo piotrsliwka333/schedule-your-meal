@@ -266,9 +266,7 @@ export const ApplicationRecipes = data => {
 
 
 			})
-
 			newRecipeRef.set(newRecipe).then(r => {
-
 				console.log('dane wysłane :)')
 				setNewRecipe({
 					id: '',
