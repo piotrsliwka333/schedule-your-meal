@@ -1,41 +1,86 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {ApplicationTemplate} from "../../Templates/ApplicationTemplate";
-import * as firebase from "firebase";
+import Container from "react-bootstrap/Container";
+import {ApplicationScheduleDescription} from "./ApplicationScheduleDescription";
+import {ApplicationScheduleWeekNumber} from "./ApplicationScheduleWeekNumber";
+import {ApplicationScheduleWeek} from "./ApplicationScheduleWeek";
 
 
 export const ApplicationSchedule = () => {
-	const [speed,setSpeed] = useState([])
-	let db = firebase.firestore()
 
-
-	// useEffect(() => {
-	// 	let root = firebase.database().ref().child('recipes');
-	// 	root.on('value',snap => {
-	// 		setSpeed(snap.val())
-	// 		console.log(snap.val())
-	// 	});
-	// },[])
-
-	// useEffect(() => {
-	// 	let data =  db.collection('users').doc(user.uid).get().then(doc => console.log(doc))
-	// 	console.log(data)
-	// },[])
-
-	useEffect(() => {
-		let user = firebase.auth().currentUser
-		if(user) {
-			db.collection('users').doc(user.uid).collection('recipes').get().then(snapshot => {
-				snapshot.docs.forEach(doc => setSpeed(prevState => [...prevState,doc.data()]))
-			})
+	const [newScheduleTitle,setNewScheduleTitle] = useState('')
+	const [newScheduleDescription,setNewScheduleDescription] = useState('')
+	const [newScheduleWeekNumber,setNewScheduleWeekNumber] = useState(1)
+	const [newSchedule,setNewSchedule] = useState({
+		id:'',
+		monday: {
+			breakfast: '',
+			secondBreakfast: '',
+			soup: '',
+			dinner: '',
+			supper: ''
+		},
+		tuesday: {
+			breakfast: '',
+			secondBreakfast: '',
+			soup: '',
+			dinner: '',
+			supper: ''
+		},
+		wednesday: {
+			breakfast: '',
+			secondBreakfast: '',
+			soup: '',
+			dinner: '',
+			supper: ''
+		},
+		thursday: {
+			breakfast: '',
+			secondBreakfast: '',
+			soup: '',
+			dinner: '',
+			supper: ''
+		},
+		friday: {
+			breakfast: '',
+			secondBreakfast: '',
+			soup: '',
+			dinner: '',
+			supper: ''
+		},
+		saturday: {
+			breakfast: '',
+			secondBreakfast: '',
+			soup: '',
+			dinner: '',
+			supper: ''
+		},
+		sunday: {
+			breakfast: '',
+			secondBreakfast: '',
+			soup: '',
+			dinner: '',
+			supper: ''
 		}
-		else {
+	})
 
-		}
-	},[])
+	//Error
+	const [newScheduleTitleError, setNewRecipeTitleError] = useState(false)
+	const [newScheduleDescriptionError, setNewRecipeDescriptionError] = useState(false)
+	const [newScheduleWeekError,setNewScheduleWeekError] = useState(false)
+	const [newScheduleRecipesError,setScheduleRecipes] = useState(false)
+	// if don't have any recipes will not be able to set a schedule
+
 
 	return(
 		<ApplicationTemplate>
-			<h1>asdsApplicationSchedule Speed {JSON.stringify(speed)}</h1>
+			<section className='schedule'>
+				<Container fluid className='pr-4 pl-4 pr-md-5 pl-md-5 h-100'>
+						<ApplicationScheduleDescription/>
+						<ApplicationScheduleWeekNumber/>
+						<ApplicationScheduleWeek/>
+				</Container>
+			</section>
 		</ApplicationTemplate>
 	)
 }

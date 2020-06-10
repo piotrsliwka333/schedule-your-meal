@@ -1,0 +1,19 @@
+.week-number {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+ &__text {
+   margin-right: 15px;
+   font-size: 1.5rem;
+   color: $color-side-panel;
+ }
+  &__input {
+    border-radius: 3px;
+    border: 1px solid $color-text-row-ext-icons;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    font-size: 1.7rem;
+    color: $color-text-row-ext-icons;
+  }
+}

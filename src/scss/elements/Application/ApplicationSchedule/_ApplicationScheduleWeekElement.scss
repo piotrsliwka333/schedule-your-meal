@@ -1,0 +1,29 @@
+.week__element-box {
+  padding: 5px;
+  border-top: 1px solid $color-text-row-ext-icons;
+  border-bottom: 1px solid $color-text-row-ext-icons;
+  display: flex;
+  .week__element__name {
+    height: 100%;
+    text-align: center;
+    font-weight: 600;
+    width: 15%;
+    font-size: 1.3rem;
+    color: $color-header-column-text;
+
+  }
+
+  .selects-box {
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    .week__element__select {
+      font-size: 1.1rem;
+      font-weight: bold;
+      font-family: $font-text;
+      color: $color-side-panel;
+      border: 1px solid $color-text-row-ext-icons;
+      border-radius: 3px;
+    }
+  }
+}

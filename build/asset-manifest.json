@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/schedule-your-meal/static/css/main.389c2520.chunk.css",
-    "main.js": "/schedule-your-meal/static/js/main.8cd7e0c6.chunk.js",
-    "main.js.map": "/schedule-your-meal/static/js/main.8cd7e0c6.chunk.js.map",
+    "main.css": "/schedule-your-meal/static/css/main.0dc8cc98.chunk.css",
+    "main.js": "/schedule-your-meal/static/js/main.165475a2.chunk.js",
+    "main.js.map": "/schedule-your-meal/static/js/main.165475a2.chunk.js.map",
     "runtime-main.js": "/schedule-your-meal/static/js/runtime-main.05fc21d1.js",
     "runtime-main.js.map": "/schedule-your-meal/static/js/runtime-main.05fc21d1.js.map",
-    "static/js/2.47f7df42.chunk.js": "/schedule-your-meal/static/js/2.47f7df42.chunk.js",
-    "static/js/2.47f7df42.chunk.js.map": "/schedule-your-meal/static/js/2.47f7df42.chunk.js.map",
+    "static/js/2.c5654fa5.chunk.js": "/schedule-your-meal/static/js/2.c5654fa5.chunk.js",
+    "static/js/2.c5654fa5.chunk.js.map": "/schedule-your-meal/static/js/2.c5654fa5.chunk.js.map",
     "index.html": "/schedule-your-meal/index.html",
-    "precache-manifest.68517d5d35f74d233493dff50a3a9cf8.js": "/schedule-your-meal/precache-manifest.68517d5d35f74d233493dff50a3a9cf8.js",
+    "precache-manifest.b3ffb1e172bfb7c292c129b9383d2354.js": "/schedule-your-meal/precache-manifest.b3ffb1e172bfb7c292c129b9383d2354.js",
     "service-worker.js": "/schedule-your-meal/service-worker.js",
-    "static/css/main.389c2520.chunk.css.map": "/schedule-your-meal/static/css/main.389c2520.chunk.css.map",
-    "static/js/2.47f7df42.chunk.js.LICENSE.txt": "/schedule-your-meal/static/js/2.47f7df42.chunk.js.LICENSE.txt",
+    "static/css/main.0dc8cc98.chunk.css.map": "/schedule-your-meal/static/css/main.0dc8cc98.chunk.css.map",
+    "static/js/2.c5654fa5.chunk.js.LICENSE.txt": "/schedule-your-meal/static/js/2.c5654fa5.chunk.js.LICENSE.txt",
     "static/media/image.png": "/schedule-your-meal/static/media/image.baa58c3c.png",
     "static/media/piotrSliwka.jpg": "/schedule-your-meal/static/media/piotrSliwka.25f44a89.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.05fc21d1.js",
-    "static/js/2.47f7df42.chunk.js",
-    "static/css/main.389c2520.chunk.css",
-    "static/js/main.8cd7e0c6.chunk.js"
+    "static/js/2.c5654fa5.chunk.js",
+    "static/css/main.0dc8cc98.chunk.css",
+    "static/js/main.165475a2.chunk.js"
   ]
 }

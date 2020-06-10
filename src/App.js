@@ -19,16 +19,12 @@ export const App = () => {
 		}
 	})
 
-
-
-
-
 	return(
 		<BrowserRouter>
 			<>
 				<Route exact path={'/schedule-your-meal'} component={Home}/>
 				<Route path={'/schedule-your-meal/application/login'} render={() => (
-					!logged ? (<ApplicationLogin />) : (<Redirect to='/schedule-your-meal/application/recipes'/>)
+					!logged ? (<ApplicationLogin />) : (<Redirect to='/schedule-your-meal/application/schedule'/>)
 				)}/>
 				<Route path={'/schedule-your-meal/application/desktop'} render={() => (
 					logged ? (<ApplicationDesktop/>) : (<Redirect to='/schedule-your-meal/application/login'/>)

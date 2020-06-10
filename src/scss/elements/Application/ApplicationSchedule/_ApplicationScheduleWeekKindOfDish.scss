@@ -1,0 +1,26 @@
+.kind-of-dish {
+  display: none;
+  @include tablet {
+    margin-top: 10px;
+    border-top: 1px solid $color-text-row-ext-icons;
+    border-bottom: 1px solid $color-text-row-ext-icons;
+    padding: 5px 5px;
+    margin-left: auto;
+    width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+
+  &__name {
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    text-align: center;
+    width: 20%;
+    font-size: 1.4rem;
+    color: $color-header-column-text;
+    font-weight: 600;
+  }
+}
