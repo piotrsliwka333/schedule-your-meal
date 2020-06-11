@@ -8,10 +8,10 @@ export const ApplicationScheduleWeekElement = (props) => {
 
 
 	return (
-		<div className='week__element-box'>
+		<div className='week__element-box col-md-6 col-xl-12'>
 			<p className='week__element__name'>{day}</p>
 			<div className='selects-box'>
-				{dishArray.map((dish,index) => <ApplicationScheduleWeekElementSelect key={index} name={dish} recipesArray={recipesArray}/>)}
+				{dishArray.map((dish,index) => <ApplicationScheduleWeekElementSelect dish={dish} key={index} name={dish} recipesArray={recipesArray}/>)}
 			</div>
 		</div>
 	)
@@ -19,7 +19,7 @@ export const ApplicationScheduleWeekElement = (props) => {
 
 
 const ApplicationScheduleWeekElementSelect = (props) => {
-	const {recipesArray, name} = props
+	const {recipesArray, name,dish} = props
 	const [recipe, setRecipe] = useState('')
 
 	const handleRecipeChange = (e) => {
@@ -28,8 +28,11 @@ const ApplicationScheduleWeekElementSelect = (props) => {
 	}
 
 	return (
-		<select className='week__element__select' value={recipe} name={name} onChange={e => handleRecipeChange(e)}>
-			{recipesArray.map((recipe,index) => <option key={index} value={recipe}>{recipe}</option>)}
-		</select>
+		<>
+			<select className='week__element__select' value={recipe} name={name} onChange={e => handleRecipeChange(e)}>
+				{recipesArray.map((recipe,index) => <option key={index} value={recipe}>{recipe}</option>)}
+			</select>
+			<p className='week__element__select__dish-helper'>{dish}</p>
+		</>
 	)
 }

@@ -2,28 +2,60 @@
   padding: 5px;
   border-top: 1px solid $color-text-row-ext-icons;
   border-bottom: 1px solid $color-text-row-ext-icons;
-  display: flex;
-  .week__element__name {
-    height: 100%;
-    text-align: center;
-    font-weight: 600;
-    width: 15%;
-    font-size: 1.3rem;
-    color: $color-header-column-text;
+  @include desktop {
+    display: flex;
 
   }
 
+  .week__element__name {
+    text-align: center;
+    font-weight: 600;
+    font-size: 2rem;
+    color: $color-header-column-text;
+    @include tablet {
+      font-size: 2.5rem;
+    }
+    @include desktop {
+      font-size: 1.9rem;
+      width: 15%;
+    }
+  }
+
   .selects-box {
-    width: 85%;
+    flex-direction: column;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    @include desktop {
+      flex-direction: row;
+      width: 85%;
+      justify-content: space-between;
+    }
+
     .week__element__select {
-      font-size: 1.1rem;
+      font-size: 2rem;
       font-weight: bold;
       font-family: $font-text;
       color: $color-side-panel;
       border: 1px solid $color-text-row-ext-icons;
       border-radius: 3px;
+      padding: 5px;
+      @include desktop {
+        font-size: 1.5rem;
+        padding: 3px;
+        width: 18%;
+
+      }
+
+
+    }
+    .week__element__select__dish-helper {
+      font-size: 1.5rem;
+      color: $color-side-panel;
+      @include desktop {
+        display: none;
+      }
+
     }
   }
 }

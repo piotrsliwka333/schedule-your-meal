@@ -1,6 +1,6 @@
 .kind-of-dish {
   display: none;
-  @include tablet {
+  @include desktop {
     margin-top: 10px;
     border-top: 1px solid $color-text-row-ext-icons;
     border-bottom: 1px solid $color-text-row-ext-icons;

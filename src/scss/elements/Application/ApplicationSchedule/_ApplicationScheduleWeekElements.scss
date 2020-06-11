@@ -1,3 +1,9 @@
 .week__elements {
-
+  margin-top: 10px;
+  overflow: auto;
+  max-height: 90%;
+  @include tablet {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
