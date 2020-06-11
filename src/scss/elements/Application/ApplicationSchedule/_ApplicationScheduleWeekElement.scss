@@ -40,11 +40,11 @@
       border: 1px solid $color-text-row-ext-icons;
       border-radius: 3px;
       padding: 5px;
+      width: 80%;
       @include desktop {
         font-size: 1.5rem;
         padding: 3px;
         width: 18%;
-
       }
 
 

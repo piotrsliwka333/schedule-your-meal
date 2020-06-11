@@ -1,17 +1,30 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {ApplicationScheduleWeekElements} from "./ApplicationScheduleWeekElements";
+import * as firebase from "firebase";
 
 export const ApplicationScheduleWeekElement = (props) => {
-	const {day} = props
-	let recipesArray = ['befsztyk po karpacku', 'szpagetti', 'rozmaryn'];
-	let dishArray = ['breakfast', 'secondBreakfast', 'soup', 'dinner', 'supper']
+	const {day,setDay,recipesArray} = props
+	const [recipes,setRecipes] = useState(false)
+
+	let dishArray = ['śniadanie', 'drugie śniadanie', 'zupa', 'obiad', 'kolacja']
+	let dishToChange = ['breakfast','secondBreakfast','soup','dinner','supper'] // this are is necessary coz our form has english names so array with
+																																							// polish names is useless in this case
+	const handleCheckSetDay = (e) => {
+		if(typeof setDay === 'function') {
+			setDay(e)
+		}
+	}
+	useEffect(() => {
+		setRecipes(recipesArray)
+	},[recipesArray])
 
 
+	if(!recipes) return <h1>d</h1>
 	return (
 		<div className='week__element-box col-md-6 col-xl-12'>
 			<p className='week__element__name'>{day}</p>
 			<div className='selects-box'>
-				{dishArray.map((dish,index) => <ApplicationScheduleWeekElementSelect dish={dish} key={index} name={dish} recipesArray={recipesArray}/>)}
+				{dishToChange.map((dish,index) => <ApplicationScheduleWeekElementSelect setDay={handleCheckSetDay}  dish={dish} key={index} name={dish} recipesArray={recipes}/>)}
 			</div>
 		</div>
 	)
@@ -19,12 +32,13 @@ export const ApplicationScheduleWeekElement = (props) => {
 
 
 const ApplicationScheduleWeekElementSelect = (props) => {
-	const {recipesArray, name,dish} = props
-	const [recipe, setRecipe] = useState('')
+	const {recipesArray, name,dish,setDay} = props
+	const [recipe, setRecipe] = useState('err')
 
 	const handleRecipeChange = (e) => {
 		const {value} = e.target
 		setRecipe(value)
+		setDay(e)
 	}
 
 	return (

@@ -1,11 +1,48 @@
 .week-number {
+  padding-left: 5px;
   margin-top: 10px;
   display: flex;
   align-items: center;
+  position: relative;
+  @include tablet {
+    padding-left: 20px;
+  }
+
+
+  .error {
+    border: 1px solid tomato;
+  }
+
+  .error-message {
+    padding-left: 20px;
+    color: tomato;
+    font-weight: bold;
+    font-size: 1.2rem;
+    position: absolute;
+    top: 30px;
+    left: 40%;
+    @include tablet {
+      left: 28%;
+
+    }
+    @include desktop {
+      left: 23.5%;
+    }
+  }
  &__text {
+   width: 40%;
    margin-right: 15px;
    font-size: 1.5rem;
    color: $color-side-panel;
+   @include tablet {
+     font-weight: 500;
+     width: 28%;
+     font-size: 1.8rem;
+   }
+   @include desktop {
+     font-size: 2.3rem;
+     width: 23.5%;
+   }
  }
   &__input {
     border-radius: 3px;
