@@ -3,6 +3,9 @@ package-lock.json
 .idea
 package.json
 
+
+
+
 # dependencies
 /node_modules
 /.pnp
@@ -27,3 +30,7 @@ yarn-error.log*
 
 # Logs
 
+#firebase
+ .firebase/
+ .firebaserc
+ firebase.json
