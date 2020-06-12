@@ -22,7 +22,7 @@ export const App = () => {
 	return(
 		<BrowserRouter>
 			<>
-				<Route exact path={'/schedule-your-meal'} component={Home}/>
+				<Route exact path={'/'} component={Home}/>
 				<Route path={'/schedule-your-meal/application/login'} render={() => (
 					!logged ? (<ApplicationLogin />) : (<Redirect to='/schedule-your-meal/application/schedule'/>)
 				)}/>
