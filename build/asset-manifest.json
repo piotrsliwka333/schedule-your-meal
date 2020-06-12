@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.e091e9d3.chunk.css",
-    "main.js": "/static/js/main.f5bb3675.chunk.js",
-    "main.js.map": "/static/js/main.f5bb3675.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.2d6c1a4b.js",
-    "runtime-main.js.map": "/static/js/runtime-main.2d6c1a4b.js.map",
-    "static/js/2.0de6bc29.chunk.js": "/static/js/2.0de6bc29.chunk.js",
-    "static/js/2.0de6bc29.chunk.js.map": "/static/js/2.0de6bc29.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.fa2d4a1fd159da59f16ca198b76efec6.js": "/precache-manifest.fa2d4a1fd159da59f16ca198b76efec6.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.e091e9d3.chunk.css.map": "/static/css/main.e091e9d3.chunk.css.map",
-    "static/js/2.0de6bc29.chunk.js.LICENSE.txt": "/static/js/2.0de6bc29.chunk.js.LICENSE.txt",
-    "static/media/image.png": "/static/media/image.baa58c3c.png",
-    "static/media/piotrSliwka.jpg": "/static/media/piotrSliwka.25f44a89.jpg"
+    "main.css": "/schedule-your-meal/static/css/main.e091e9d3.chunk.css",
+    "main.js": "/schedule-your-meal/static/js/main.848f1583.chunk.js",
+    "main.js.map": "/schedule-your-meal/static/js/main.848f1583.chunk.js.map",
+    "runtime-main.js": "/schedule-your-meal/static/js/runtime-main.05fc21d1.js",
+    "runtime-main.js.map": "/schedule-your-meal/static/js/runtime-main.05fc21d1.js.map",
+    "static/js/2.e6dda84a.chunk.js": "/schedule-your-meal/static/js/2.e6dda84a.chunk.js",
+    "static/js/2.e6dda84a.chunk.js.map": "/schedule-your-meal/static/js/2.e6dda84a.chunk.js.map",
+    "index.html": "/schedule-your-meal/index.html",
+    "precache-manifest.e75cd4d90d3d78a92289d226ddd9a7f4.js": "/schedule-your-meal/precache-manifest.e75cd4d90d3d78a92289d226ddd9a7f4.js",
+    "service-worker.js": "/schedule-your-meal/service-worker.js",
+    "static/css/main.e091e9d3.chunk.css.map": "/schedule-your-meal/static/css/main.e091e9d3.chunk.css.map",
+    "static/js/2.e6dda84a.chunk.js.LICENSE.txt": "/schedule-your-meal/static/js/2.e6dda84a.chunk.js.LICENSE.txt",
+    "static/media/image.png": "/schedule-your-meal/static/media/image.baa58c3c.png",
+    "static/media/piotrSliwka.jpg": "/schedule-your-meal/static/media/piotrSliwka.25f44a89.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.2d6c1a4b.js",
-    "static/js/2.0de6bc29.chunk.js",
+    "static/js/runtime-main.05fc21d1.js",
+    "static/js/2.e6dda84a.chunk.js",
     "static/css/main.e091e9d3.chunk.css",
-    "static/js/main.f5bb3675.chunk.js"
+    "static/js/main.848f1583.chunk.js"
   ]
 }
