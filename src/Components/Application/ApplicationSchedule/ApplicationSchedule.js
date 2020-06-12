@@ -12,7 +12,7 @@ export const ApplicationSchedule = () => {
 
 	const [newScheduleTitle, setNewScheduleTitle] = useState('')
 	const [newScheduleDescription, setNewScheduleDescription] = useState('')
-	const [newScheduleWeekNumber, setNewScheduleWeekNumber] = useState(1)
+	const [newScheduleWeekNumber, setNewScheduleWeekNumber] = useState('')
 	const [moveToAddNewSchedule,setMoveToAddNewSchedule] = useState(false)
 	const [scheduleId,setScheduleId] = useState('')
 	const [monday, setMonday] = useState({
@@ -80,55 +80,57 @@ export const ApplicationSchedule = () => {
 				return dataToSeT
 
 			})
-			setMonday({
-				breakfast: newArray[0].title,
-				secondBreakfast: newArray[0].title,
-				soup: newArray[0].title,
-				dinner: newArray[0].title,
-				supper: newArray[0].title
-			})
-			setTuesday({
-				breakfast: newArray[0].title,
-				secondBreakfast: newArray[0].title,
-				soup: newArray[0].title,
-				dinner: newArray[0].title,
-				supper: newArray[0].title
-			})
-			setWednesday({
-				breakfast: newArray[0].title,
-				secondBreakfast: newArray[0].title,
-				soup: newArray[0].title,
-				dinner: newArray[0].title,
-				supper: newArray[0].title
-			})
-			setThursday({
-				breakfast: newArray[0].title,
-				secondBreakfast: newArray[0].title,
-				soup: newArray[0].title,
-				dinner: newArray[0].title,
-				supper: newArray[0].title
-			})
-			setFriday({
-				breakfast: newArray[0].title,
-				secondBreakfast: newArray[0].title,
-				soup: newArray[0].title,
-				dinner: newArray[0].title,
-				supper: newArray[0].title
-			})
-			setSaturday({
-				breakfast: newArray[0].title,
-				secondBreakfast: newArray[0].title,
-				soup: newArray[0].title,
-				dinner: newArray[0].title,
-				supper: newArray[0].title
-			})
-			setSunday({
-				breakfast: newArray[0].title,
-				secondBreakfast: newArray[0].title,
-				soup: newArray[0].title,
-				dinner: newArray[0].title,
-				supper: newArray[0].title
-			})
+			if(newArray.length > 0) {
+				setMonday({
+					breakfast: newArray[0].title,
+					secondBreakfast: newArray[0].title,
+					soup: newArray[0].title,
+					dinner: newArray[0].title,
+					supper: newArray[0].title
+				})
+				setTuesday({
+					breakfast: newArray[0].title,
+					secondBreakfast: newArray[0].title,
+					soup: newArray[0].title,
+					dinner: newArray[0].title,
+					supper: newArray[0].title
+				})
+				setWednesday({
+					breakfast: newArray[0].title,
+					secondBreakfast: newArray[0].title,
+					soup: newArray[0].title,
+					dinner: newArray[0].title,
+					supper: newArray[0].title
+				})
+				setThursday({
+					breakfast: newArray[0].title,
+					secondBreakfast: newArray[0].title,
+					soup: newArray[0].title,
+					dinner: newArray[0].title,
+					supper: newArray[0].title
+				})
+				setFriday({
+					breakfast: newArray[0].title,
+					secondBreakfast: newArray[0].title,
+					soup: newArray[0].title,
+					dinner: newArray[0].title,
+					supper: newArray[0].title
+				})
+				setSaturday({
+					breakfast: newArray[0].title,
+					secondBreakfast: newArray[0].title,
+					soup: newArray[0].title,
+					dinner: newArray[0].title,
+					supper: newArray[0].title
+				})
+				setSunday({
+					breakfast: newArray[0].title,
+					secondBreakfast: newArray[0].title,
+					soup: newArray[0].title,
+					dinner: newArray[0].title,
+					supper: newArray[0].title
+				})
+			}
 
 			})
 		},[])
@@ -146,10 +148,10 @@ export const ApplicationSchedule = () => {
 		if (newScheduleTitle.length === 0) {
 			setNewScheduleTitleError(true)
 		}
-		if (typeof scheduleWeekNumber.length === 'undefined') {
+		if (newScheduleWeekNumber.length === 0) {
 			setNewScheduleWeekNumberError(true)
 		}
-		if (scheduleWeekNumber.length > 0 && newScheduleWeekNumberError === false && newScheduleTitleError === false && newScheduleTitle.length > 0 && newScheduleDescriptionError === false && newScheduleDescription.length > 0) {
+		if (newScheduleWeekNumber.length > 0 && newScheduleWeekNumberError === false && newScheduleTitleError === false && newScheduleTitle.length > 0 && newScheduleDescriptionError === false && newScheduleDescription.length > 0) {
 			setNewScheduleDescriptionError(false)
 			setNewScheduleTitleError(false)
 			setNewScheduleWeekNumberError(false)
@@ -169,24 +171,76 @@ export const ApplicationSchedule = () => {
 			console.log(dataToSent)
 			db.collection('users').doc(user.uid).collection('schedules').add(dataToSent).then(data => {
 				setMoveToAddNewSchedule(false)
+				setNewScheduleWeekNumber('')
 				setNewScheduleTitle('')
 				setNewScheduleDescription('')
 				setNewScheduleWeekNumber('')
+				db.collection('users').doc(user.uid).collection('recipes').onSnapshot(snapshot => {
+
+					let changes = snapshot.docChanges()
+					let newArray = changes.map(change => {
+						let dataToSeT = change.doc.data()
+						dataToSeT.id = change.doc.id
+						return dataToSeT
+
+					})
+					if(newArray.length > 0) {
+						setMonday({
+							breakfast: newArray[0].title,
+							secondBreakfast: newArray[0].title,
+							soup: newArray[0].title,
+							dinner: newArray[0].title,
+							supper: newArray[0].title
+						})
+						setTuesday({
+							breakfast: newArray[0].title,
+							secondBreakfast: newArray[0].title,
+							soup: newArray[0].title,
+							dinner: newArray[0].title,
+							supper: newArray[0].title
+						})
+						setWednesday({
+							breakfast: newArray[0].title,
+							secondBreakfast: newArray[0].title,
+							soup: newArray[0].title,
+							dinner: newArray[0].title,
+							supper: newArray[0].title
+						})
+						setThursday({
+							breakfast: newArray[0].title,
+							secondBreakfast: newArray[0].title,
+							soup: newArray[0].title,
+							dinner: newArray[0].title,
+							supper: newArray[0].title
+						})
+						setFriday({
+							breakfast: newArray[0].title,
+							secondBreakfast: newArray[0].title,
+							soup: newArray[0].title,
+							dinner: newArray[0].title,
+							supper: newArray[0].title
+						})
+						setSaturday({
+							breakfast: newArray[0].title,
+							secondBreakfast: newArray[0].title,
+							soup: newArray[0].title,
+							dinner: newArray[0].title,
+							supper: newArray[0].title
+						})
+						setSunday({
+							breakfast: newArray[0].title,
+							secondBreakfast: newArray[0].title,
+							soup: newArray[0].title,
+							dinner: newArray[0].title,
+							supper: newArray[0].title
+						})
+					}
+
+
+				})
 			})
 		}
 	}
-
-	const [newSchedule, setNewSchedule] = useState({
-		id: '',
-		monday: monday,
-		tuesday: tuesday,
-		wednesday: wednesday,
-		thursday: thursday,
-		friday: friday,
-		saturday: saturday,
-		sunday: sunday
-	})
-
 	//Error
 	const [newScheduleTitleError, setNewScheduleTitleError] = useState(false)
 	const [newScheduleDescriptionError, setNewScheduleDescriptionError] = useState(false)
@@ -299,18 +353,49 @@ export const ApplicationSchedule = () => {
 		}
 	}
 
+	const [weeks,setWeeks] = useState([])
+
+	useEffect(()=> {
+		let db = firebase.firestore()
+		let user = firebase.auth().currentUser
+		db.collection('users').doc(user.uid).collection('schedules').onSnapshot(snapshot => {
+
+			let changes = snapshot.docChanges()
+			setWeeks( changes.map(change => {
+				let dataToSeT = change.doc.data()
+				dataToSeT.id = change.doc.id
+				return dataToSeT.weekNumber
+
+			}))
+
+		})
+	},[])
+
+
+	const checkWeeks = (array,value) => {
+
+		return array.some(element => element === value)
+	}
 	//set week number
 	const handleScheduleWeekNumberValidation = (e) => {
+
 		const {value} = e.target
 		const checkNumber = (value) => {
 			let regex = /^[1-9]\d*$/
 			return regex.test(value)
 		}
 
-		if (parseInt(value) <= 0 || parseInt(value) > 51 || value.length === 0 || !checkNumber(value)) {
+		// user cannot add new plan with the same week number he can only remove or edit existing
+
+
+
+
+
+		if (parseInt(value) <= 0 || parseInt(value) > 51 || value.length === 0 || !checkNumber(value) || checkWeeks(weeks,value)){
 			setNewScheduleWeekNumber(value)
 			setNewScheduleWeekNumberError(true)
-		} else {
+		}
+		else {
 			setNewScheduleWeekNumber(value)
 			setNewScheduleWeekNumberError(false)
 		}
@@ -324,7 +409,7 @@ export const ApplicationSchedule = () => {
 		e.preventDefault();
 		let db = firebase.firestore()
 		let user = firebase.auth().currentUser
-		console.log('work')
+
 
 		db.collection('users').doc(userId).collection('schedules').doc(idOfRecipe).get()
 			.then(data => {
@@ -405,7 +490,7 @@ export const ApplicationSchedule = () => {
 					                                descriptionError={newScheduleDescriptionError}
 					                                setTitle={handleScheduleTitleValidation}
 					                                setDescription={handleScheduleDescriptionValidation}/>
-					<ApplicationScheduleWeekNumber setWeekNumber={handleScheduleWeekNumberValidation}
+					<ApplicationScheduleWeekNumber newOrEdit={newOrEdit} weeks={weeks} checkWeeks={checkWeeks} setWeekNumber={handleScheduleWeekNumberValidation}
 					                               weekNumberError={newScheduleWeekNumberError}
 					                               weekNumberValue={newScheduleWeekNumber}/>
 					<ApplicationScheduleWeek sunday={sunday} saturday={saturday} friday={friday} thursday={thursday}

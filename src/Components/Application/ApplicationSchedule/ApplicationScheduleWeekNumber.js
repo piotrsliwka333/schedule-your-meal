@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 
 export const ApplicationScheduleWeekNumber = (props) => {
-	const {setWeekNumber,weekNumberError,weekNumberValue} = props
+	const {newOrEdit,weeks,checkWeeks,setWeekNumber,weekNumberError,weekNumberValue} = props
 	const [error,setError] = useState(weekNumberError)
 
 	useEffect(()=> {
@@ -20,8 +20,9 @@ export const ApplicationScheduleWeekNumber = (props) => {
 	return (
 		<div className='week-number' >
 			<label className='week-number__text'>Numer Tygodnia</label>
-			<input value={weekNumberValue} onChange={e => handleCheckSetWeekNumber(e)} className={error ? 'week-number__input error' : 'week-number__input'} type='text'/>
-			{error && <p className='error-message'>error</p>}
+			<input disabled={newOrEdit === 'edit'} value={weekNumberValue} onChange={e => handleCheckSetWeekNumber(e)} className={error ? 'week-number__input error' : 'week-number__input'} type='text'/>
+			{error && <span className='error-message'>{checkWeeks(weeks,weekNumberValue) ? 'posiadasz już ten nr tygodnia w swoich planach :)' : 'rok ma 52 tygodnie , wybierz od 1 do 52 :)'}</span>}
+
 		</div>
 	)
 }

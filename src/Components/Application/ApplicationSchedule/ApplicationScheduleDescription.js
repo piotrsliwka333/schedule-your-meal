@@ -28,7 +28,7 @@ export const ApplicationScheduleDescription = (props) => {
 			<form onSubmit={e => handleCheckAddOrSaveEditedNewSchedule(e,weekNumberValue,id)}
 				className='description-form'>
 				<div className='description-form__box'>
-					<h1 className='description-form__title highlight'>Nowy Plan</h1>
+					<h1 className='description-form__title highlight'>{newOrEdit === 'edit' ? 'Edytuj Plan' : 'Nowy Plan'}</h1>
 					<button type='submit' className='description-form__button home-button'>Zapisz zamknij</button>
 				</div>
 				<div className='description-form__box'>
@@ -40,7 +40,7 @@ export const ApplicationScheduleDescription = (props) => {
 						className='error-message'>{titleValue.length > 50 ? 'nazwa nie może być dłuższa niż 50 znaków' : 'pole nie może zostać puste !'}</p>}
 				</div>
 				<div className='description-form__box'>
-					<label className='description-form__label'>Opis Przepisu</label>
+					<label className='description-form__label'>Opis Planu</label>
 					<textarea value={descriptionValue} onChange={e => handleCheckSetDescription(e)}
 					          name='description'
 					          className={descriptionError ? 'description-form__textarea error' : 'description-form__textarea'}
