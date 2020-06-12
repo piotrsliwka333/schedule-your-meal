@@ -27,7 +27,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "homepage": "https://piotrsliwka333.github.io/schedule-your-meal",
+  "homepage": "https://schedule-your-meal.firebaseapp.com/schedule-your-meal",
   "browserslist": {
     "production": [
       ">0.2%",
