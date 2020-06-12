@@ -5,7 +5,7 @@ import {ApplicationScheduleWeekElement} from "./ApplicationScheduleWeekElement";
 import * as firebase from "firebase";
 
 export const ApplicationScheduleWeek = (props) => {
-	const {setMonday,setTuesday,setWednesday,setThursday,setFriday,setSaturday,setSunday} = props
+	const {sunday,saturday,friday,thursday,wednesday,tuesday,monday,setMonday,setTuesday,setWednesday,setThursday,setFriday,setSaturday,setSunday} = props
 
 	const [recipes,setRecipes] = useState([])
 
@@ -23,13 +23,13 @@ export const ApplicationScheduleWeek = (props) => {
 		<div className='week'>
 			<ApplicationScheduleKindOfDish/>
 			<ApplicationScheduleWeekElements>
-				<ApplicationScheduleWeekElement recipesArray={recipes} setDay={setMonday} day={'poniedziałek'}/>
-				<ApplicationScheduleWeekElement recipesArray={recipes} setDay={setTuesday} day={'wtorek'}/>
-				<ApplicationScheduleWeekElement recipesArray={recipes} setDay={setWednesday} day={'środa'}/>
-				<ApplicationScheduleWeekElement recipesArray={recipes} setDay={setThursday} day={'czwartek'}/>
-				<ApplicationScheduleWeekElement recipesArray={recipes} setDay={setFriday} day={'piątek'}/>
-				<ApplicationScheduleWeekElement recipesArray={recipes} setDay={setSaturday} day={'sobota'}/>
-				<ApplicationScheduleWeekElement recipesArray={recipes} setDay={setSunday} day={'niedziela'}/>
+				<ApplicationScheduleWeekElement currentValue={monday} recipesArray={recipes} setDay={setMonday} day={'poniedziałek'}/>
+				<ApplicationScheduleWeekElement currentValue={tuesday} recipesArray={recipes} setDay={setTuesday} day={'wtorek'}/>
+				<ApplicationScheduleWeekElement currentValue={wednesday} recipesArray={recipes} setDay={setWednesday} day={'środa'}/>
+				<ApplicationScheduleWeekElement currentValue={thursday} recipesArray={recipes} setDay={setThursday} day={'czwartek'}/>
+				<ApplicationScheduleWeekElement currentValue={friday} recipesArray={recipes} setDay={setFriday} day={'piątek'}/>
+				<ApplicationScheduleWeekElement currentValue={saturday} recipesArray={recipes} setDay={setSaturday} day={'sobota'}/>
+				<ApplicationScheduleWeekElement currentValue={sunday} recipesArray={recipes} setDay={setSunday} day={'niedziela'}/>
 			</ApplicationScheduleWeekElements>
 		</div>
 	)
