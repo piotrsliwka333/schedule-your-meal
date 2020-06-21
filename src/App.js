@@ -8,6 +8,7 @@ import {ApplicationSchedule} from "./Components/Application/ApplicationSchedule/
 import firebase from "firebase/app";
 import 'firebase/firestore'
 import 'firebase/auth'
+import {ApplicationShopping} from "./Components/Application/ApplicationShopping/ApplicationShopping";
 
 export const App = () => {
 	const [logged, setLogged] = useState(false)
@@ -25,7 +26,7 @@ export const App = () => {
 			<>
 				<Route exact path={'/schedule-your-meal'} component={Home}/>
 				<Route path={'/'} render={() => (
-					!logged ? (<ApplicationLogin/>) : (<Redirect to='/schedule-your-meal/desktop'/>)
+					!logged ? (<ApplicationLogin/>) : (<Redirect to='/schedule-your-meal/shopping'/>)
 				)}/>
 				<Route path={'/schedule-your-meal/desktop'} render={() => (
 					logged ? (<ApplicationDesktop/>) : (<Redirect to='/'/>)
@@ -35,6 +36,9 @@ export const App = () => {
 				)}/>
 				<Route path={'/schedule-your-meal/schedule'} render={() => (
 					logged ? (<ApplicationSchedule/>) : (<Redirect to='/'/>)
+				)}/>
+				<Route path={'/schedule-your-meal/shopping'} render={() => (
+					logged ? (<ApplicationShopping/>) : (<Redirect to='/'/>)
 				)}/>
 			</>
 		</Router>

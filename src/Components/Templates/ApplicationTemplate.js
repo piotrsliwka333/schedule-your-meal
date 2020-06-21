@@ -67,6 +67,8 @@ export const ApplicationTemplate = (props) => {
 						                                           className='nav-list__link'>Przepisy</NavLink></li>
 						<li className="nav-list__element"><NavLink  to='/schedule-your-meal/schedule'
 						                                           className='nav-list__link'>Plany</NavLink></li>
+						<li className="nav-list__element"><NavLink  to='/schedule-your-meal/shopping'
+						                                            className='nav-list__link'>Zakupy</NavLink></li>
 					</ul>
 				</nav>
 				<div className='main-content' style={style}>

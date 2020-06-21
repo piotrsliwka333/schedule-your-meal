@@ -1,0 +1,13 @@
+.shopping-list {
+  width: 100%;
+  height: 100%;
+  border: 2px dashed $color-text-row-ext-icons;
+  border-radius: 2px;
+  background-color: lighten($color-bcg,1%);
+  @include tablet {
+    width: 65%;
+  }
+  @include desktop {
+    width: 70%;
+  }
+}

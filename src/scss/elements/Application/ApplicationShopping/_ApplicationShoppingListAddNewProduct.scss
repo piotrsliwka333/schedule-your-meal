@@ -1,0 +1,67 @@
+.shopping-list-form {
+  padding: 6px 0;
+  width: 93%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid $color-text-row-ext-icons;
+  position: relative;
+  &__label {
+    display: none;
+    font-size: 1.5rem;
+    color: $color-button-highlight-headers;
+    font-weight: 600;
+    width: 37%;
+    @include tablet {
+      display: block;
+      font-size: 1.8rem;
+    }
+    @include desktop {
+      font-size: 2rem;
+    }
+  }
+  &__input {
+    color: black;
+    padding: 5px;
+    border-radius: 2px;
+    border: 1px solid $color-text-row-ext-icons;
+    font-size: 1.4rem;
+    width: 80%;
+    @include tablet {
+      width: 61%;
+    }
+  }
+  &__input::placeholder {
+    font-size: 1.3rem;
+    color: #4a4a49;
+  }
+  &-btn {
+    background: transparent;
+    font-size: 3rem;
+    color: $color-msg-success;
+    border: none;
+    &:hover {
+      color: lighten($color-msg-success,5%);
+    }
+  }
+  .error {
+    border: 1px solid tomato;
+  }
+  .error-message {
+    font-size: 1.2rem;
+    color: darken(tomato,5%);
+    font-weight: bold;
+  }
+  .product-error {
+    position: absolute;
+    left: 0;
+    top: 43px;
+    @include tablet {
+      left: 37%;
+    }
+    @include desktop {
+      left: 36%;
+    }
+  }
+}
