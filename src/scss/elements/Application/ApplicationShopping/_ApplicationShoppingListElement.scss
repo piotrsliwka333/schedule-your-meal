@@ -1,0 +1,49 @@
+.element {
+  background-color: $color-bcg;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  margin: 10px 0;
+  padding: 5px 10px;
+  border-radius: 15px;
+  border: 2px dashed $color-text-row-ext-icons;
+  &__name {
+    font-size: 1.5rem;
+    color: $color-header-column-text;
+    @include tablet {
+      font-size: 2rem;
+    }
+  }
+  .action-container {
+    .element-btn {
+      font-size: 1.5rem;
+      background: transparent;
+      border: none;
+      padding: 5px;
+      @include tablet {
+        font-size: 2.5rem;
+      }
+    }
+    .edit-btn {
+      color: $color-msg-warning;
+      &:hover {
+        color: lighten($color-msg-warning,5%);
+      }
+    }
+    .delete-btn {
+      color: $color-trash-icon;
+      &:hover {
+        color: lighten($color-trash-icon,5%);
+      }
+    }
+    .complete-btn {
+      color: $color-msg-success;
+      &:hover {
+        color: lighten($color-msg-success,5%);
+      }
+    }
+
+
+  }
+}
