@@ -1,9 +1,8 @@
 import React from "react";
 
-export const ApplicationListDescription = (props) => {
-	const {title} = props
+export const ApplicationListDescription = () => {
 
-	return(
+	return (
 		<div className='list-description'>
 			<p className='list-description__text name'>Nazwa</p>
 			<p className='list-description__text description'>Opis</p>

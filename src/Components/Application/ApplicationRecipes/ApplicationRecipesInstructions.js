@@ -4,7 +4,7 @@ import {ApplicationRecipesElements} from "./ApplicationRecipesElements";
 import {ApplicationRecipesElement} from "./ApplicationRecipesElement";
 
 export const ApplicationRecipesInstructions = (props) => {
-	const {saveEditedElement,deleteElement, addNewInstruction, newRecipe, instructionValidation, newInstructionValue, newInstructionError} = props
+	const {saveEditedElement, deleteElement, addNewInstruction, newRecipe, instructionValidation, newInstructionValue, newInstructionError} = props
 
 	const handleCheckInstructionValidation = (e) => {
 		if (typeof instructionValidation === 'function') {
@@ -38,7 +38,8 @@ export const ApplicationRecipesInstructions = (props) => {
 				{newRecipe.instructions.map((element) => {
 
 					return (
-						<ApplicationRecipesElement saveEditedElement={saveEditedElement}  arrayToEdit={'instructions'}    array={newRecipe.instructions}
+						<ApplicationRecipesElement saveEditedElement={saveEditedElement} arrayToEdit={'instructions'}
+						                           array={newRecipe.instructions}
 						                           elementToEditOrDelete={element.id} deleteElement={deleteElement} key={element.id}
 						                           text={element.name}/>
 					)

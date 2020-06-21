@@ -1,10 +1,9 @@
 import React from "react";
 
 export const ApplicationDesktopNotification = (props) => {
-	const {icon,text,display,name,extraClass} = props
-
+	const {icon, text, display, name, extraClass} = props
 	const handleCheckFn = (e) => {
-		if(typeof display === 'function') {
+		if (typeof display === 'function') {
 			display(e);
 		}
 	}

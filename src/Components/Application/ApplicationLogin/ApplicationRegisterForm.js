@@ -1,5 +1,7 @@
 import React, {useState} from "react";
-import * as firebase from "firebase";
+import firebase from "firebase/app";
+import 'firebase/firestore'
+import 'firebase/auth'
 
 export const ApplicationRegisterForm = () => {
 	const auth = firebase.auth()
@@ -7,23 +9,24 @@ export const ApplicationRegisterForm = () => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [passwordRepeat, setPasswordRepeat] = useState('')
-
 	//Errors
-	const [emailError,setEmailError] = useState(false)
+	const [emailError, setEmailError] = useState(false)
 	const [registerError, setRegisterError] = useState(false)
 	const [passwordError, setPasswordError] = useState(false)
-	const [passwordRepeatError,setPasswordRepeatError] = useState(false)
-
+	const [passwordRepeatError, setPasswordRepeatError] = useState(false)
 
 	const registerNewAccountWithMailAndPassword = (e) => {
 		e.preventDefault();
 		if (!validateEmail(email)) {
 			setEmailError(true)
-		} if (password.length < 6) {
+		}
+		if (password.length < 6) {
 			setPasswordError(true)
-		} if (passwordRepeat.length < 6 || password !== passwordRepeat) {
+		}
+		if (passwordRepeat.length < 6 || password !== passwordRepeat) {
 			setPasswordRepeatError(true)
-		} if(!registerError && !passwordError && !emailError) {
+		}
+		if (!registerError && !passwordError && !emailError) {
 			auth.createUserWithEmailAndPassword(email, password).then(cred => {
 				return (
 					db.collection('users').doc(cred.user.uid).set({
@@ -33,6 +36,7 @@ export const ApplicationRegisterForm = () => {
 			})
 		}
 	}
+
 	// function which check validate of email
 	function validateEmail(email) {
 		const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -41,8 +45,7 @@ export const ApplicationRegisterForm = () => {
 
 	const handleEmailValidation = (e) => {
 		const {value} = e.target
-
-		if(!validateEmail(value)) {
+		if (!validateEmail(value)) {
 			setEmailError(true)
 			setEmail(value)
 		} else {
@@ -93,7 +96,8 @@ export const ApplicationRegisterForm = () => {
 				       onChange={e => handlePasswordRepeatValidation(e)}/>
 				{emailError && <p className='error-message email-error'>podaj poprawny adres email</p>}
 				{passwordError && <p className='error-message password-error'>hasło musi mieć co najmniej 6 znaków</p>}
-				{passwordRepeatError && <p className='error-message repeat-password-error'>{passwordRepeat.length < 6 ? 'hasło musi mieć co najmniej 6 znaków' : 'hasła muszą być takie same'}</p>}
+				{passwordRepeatError && <p
+					className='error-message repeat-password-error'>{passwordRepeat.length < 6 ? 'hasło musi mieć co najmniej 6 znaków' : 'hasła muszą być takie same'}</p>}
 				{registerError && <p className='error-message register-error'>Niepoprawny login lub hasło</p>}
 				<button type='submit' className='login-form__button'>Zarejestruj się</button>
 			</form>

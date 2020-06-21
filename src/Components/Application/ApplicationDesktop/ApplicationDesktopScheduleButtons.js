@@ -1,8 +1,7 @@
 import React from "react";
 
 export const ApplicationDesktopScheduleButtons = (props) => {
-	const {nextWeek,prevWeek} = props
-
+	const {nextWeek, prevWeek} = props
 	const handleCheckNextWeek = (e) => {
 		if (typeof nextWeek === 'function') {
 			nextWeek(e)

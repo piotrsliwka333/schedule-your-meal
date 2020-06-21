@@ -9,7 +9,7 @@ import {HomeFooter} from "./HomeFooter/HomeFooter";
 
 export const Home = () => {
 
-	return(
+	return (
 		<HomeTemplate>
 			<main>
 				<HomeSlider/>

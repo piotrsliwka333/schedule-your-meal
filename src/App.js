@@ -1,41 +1,42 @@
-import React, {useEffect, useState} from "react"
-import {BrowserRouter, Route,Redirect} from "react-router-dom";
+import React, {useState} from "react"
+import {BrowserRouter as Router, Redirect, Route} from "react-router-dom";
 import {Home} from "./Components/Home/Home";
 import {ApplicationLogin} from "./Components/Application/ApplicationLogin/ApplicationLogin";
 import {ApplicationDesktop} from "./Components/Application/ApplicationDesktop/ApplicationDesktop";
 import {ApplicationRecipes} from "./Components/Application/ApplicationRecipes/ApplicationRecipes";
 import {ApplicationSchedule} from "./Components/Application/ApplicationSchedule/ApplicationSchedule";
-import * as firebase from "firebase";
-
+import firebase from "firebase/app";
+import 'firebase/firestore'
+import 'firebase/auth'
 
 export const App = () => {
-	const [logged,setLogged] = useState(false)
+	const [logged, setLogged] = useState(false)
 
 	firebase.auth().onAuthStateChanged(firebaseUser => {
-		if(firebaseUser) {
+		if (firebaseUser) {
 			setLogged(true)
 		} else {
 			setLogged(false)
 		}
 	})
 
-	return(
-		<BrowserRouter>
+	return (
+		<Router>
 			<>
 				<Route exact path={'/schedule-your-meal'} component={Home}/>
-				<Route path={'/schedule-your-meal/application/login'} render={() => (
-					!logged ? (<ApplicationLogin />) : (<Redirect to='/schedule-your-meal/application/schedule'/>)
+				<Route path={'/'} render={() => (
+					!logged ? (<ApplicationLogin/>) : (<Redirect to='/schedule-your-meal/desktop'/>)
 				)}/>
-				<Route path={'/schedule-your-meal/application/desktop'} render={() => (
-					logged ? (<ApplicationDesktop/>) : (<Redirect to='/schedule-your-meal/application/login'/>)
+				<Route path={'/schedule-your-meal/desktop'} render={() => (
+					logged ? (<ApplicationDesktop/>) : (<Redirect to='/'/>)
 				)}/>
-				<Route path={'/schedule-your-meal/application/recipes'} render={() => (
-					logged ? (<ApplicationRecipes/>) : (<Redirect to='/schedule-your-meal/application/login'/>)
+				<Route path={'/schedule-your-meal/recipes'} render={() => (
+					logged ? (<ApplicationRecipes/>) : (<Redirect to='/'/>)
 				)}/>
-				<Route path={'/schedule-your-meal/application/schedule'} render={() => (
-					logged ? (<ApplicationSchedule/>) : (<Redirect to='/schedule-your-meal/application/login'/>)
+				<Route path={'/schedule-your-meal/schedule'} render={() => (
+					logged ? (<ApplicationSchedule/>) : (<Redirect to='/'/>)
 				)}/>
 			</>
-		</BrowserRouter>
+		</Router>
 	)
 }

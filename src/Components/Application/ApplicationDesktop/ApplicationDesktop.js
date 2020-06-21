@@ -6,7 +6,6 @@ import {ApplicationDesktopNotifications} from "./ApplicationDesktopNotifications
 import {ApplicationDesktopSchedule} from "./ApplicationDesktopSchedule";
 
 export const ApplicationDesktop = () => {
-
 	return (
 		<ApplicationTemplate>
 			<section className='desktop'>

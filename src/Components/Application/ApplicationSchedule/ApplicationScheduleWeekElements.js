@@ -1,8 +1,7 @@
 import React from "react";
 
 export const ApplicationScheduleWeekElements = (props) => {
-
-	return(
+	return (
 		<div className='week__elements'>
 			{props.children}
 		</div>

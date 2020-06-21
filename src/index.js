@@ -1,9 +1,11 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import {App} from "./App";
 import './scss/main.scss'
 import firebase from 'firebase/app';
+import 'firebase/firestore'
+import 'firebase/auth'
 
 const firebaseConfig = {
 	apiKey: "AIzaSyCfnJbfmd62J8vKl0Ql0aKxeAKUQQResIM",
@@ -15,16 +17,11 @@ const firebaseConfig = {
 	appId: "1:730957919059:web:1daea59ee84e98859967a6",
 	measurementId: "G-CQ4JCTD811"
 };
-
 firebase.initializeApp(firebaseConfig)
-let db = firebase.firestore();
-let auth = firebase.auth();
-
-
 
 ReactDOM.render(
-    <App />,
-  document.getElementById('root')
+	<App/>,
+	document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change

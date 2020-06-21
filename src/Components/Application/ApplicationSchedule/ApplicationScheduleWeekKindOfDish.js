@@ -1,8 +1,7 @@
 import React from "react";
 
 export const ApplicationScheduleKindOfDish = () => {
-
-	return(
+	return (
 		<div className='kind-of-dish'>
 			<p className='kind-of-dish__name'>Śniadanie</p>
 			<p className='kind-of-dish__name'>Drugie Śniadanie</p>

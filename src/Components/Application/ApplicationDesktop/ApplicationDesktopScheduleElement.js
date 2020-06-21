@@ -1,11 +1,9 @@
 import React from "react";
 
 export const ApplicationDesktopScheduleElement = (props) => {
-	const {day,breakfast,secondBreakfast,soup,dinner,supper} = props
+	const {day, breakfast, secondBreakfast, soup, dinner, supper} = props
 
-
-
-	return(
+	return (
 		<div className='desktop__schedule__box'>
 			<h2 className='desktop__schedule__day'>{day}</h2>
 			<p className='desktop__schedule__meal'>{breakfast}</p>

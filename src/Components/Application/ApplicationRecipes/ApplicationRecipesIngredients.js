@@ -4,7 +4,7 @@ import {ApplicationRecipesElement} from "./ApplicationRecipesElement";
 import {Col} from "react-bootstrap";
 
 export const ApplicationRecipesIngredients = (props) => {
-	const {saveEditedElement,deleteElement,addNewIngredient, newRecipe, ingredientValidation, newIngredientValue, newIngredientError} = props
+	const {saveEditedElement, deleteElement, addNewIngredient, newRecipe, ingredientValidation, newIngredientValue, newIngredientError} = props
 
 	const handleCheckIngredientValidation = (e) => {
 		if (typeof ingredientValidation === 'function') {
@@ -17,7 +17,6 @@ export const ApplicationRecipesIngredients = (props) => {
 			addNewIngredient(e, newIngredientValue, newRecipesIngredients)
 		}
 	}
-
 
 	return (
 		<Col className='recipes__ingredients col-12 col-md-6 col-xl-6'>
@@ -39,7 +38,8 @@ export const ApplicationRecipesIngredients = (props) => {
 			<ApplicationRecipesElements>
 				{newRecipe.ingredients.map(element => {
 					return (
-						<ApplicationRecipesElement saveEditedElement={saveEditedElement}  arrayToEdit={'ingredients'} array={newRecipe.ingredients}
+						<ApplicationRecipesElement saveEditedElement={saveEditedElement} arrayToEdit={'ingredients'}
+						                           array={newRecipe.ingredients}
 						                           elementToEditOrDelete={element.id} deleteElement={deleteElement}
 						                           text={element.name} key={element.id}/>
 					)

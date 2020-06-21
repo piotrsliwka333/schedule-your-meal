@@ -2,9 +2,9 @@ import React from "react";
 import {Col} from "react-bootstrap";
 
 export const HomeAboutApplicationElement = (props) => {
-	const {icon,title,text} = props
+	const {icon, title, text} = props
 
-	return(
+	return (
 		<Col className='col-10 col-md-6 col-xl-3 about-application__content'>
 			<span className='about-application__icon'>
 				<i className={icon}/>

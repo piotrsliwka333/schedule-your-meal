@@ -2,31 +2,32 @@ import React from "react";
 import {Col} from "react-bootstrap";
 
 export const ApplicationScheduleDescription = (props) => {
-	const {id,handleSaveEditedSchedule,newOrEdit,weekNumberValue,addNewSchedule,titleValue,descriptionValue,titleError,descriptionError,setDescription,setTitle} = props
+	const {id, handleSaveEditedSchedule, newOrEdit, weekNumberValue, addNewSchedule, titleValue, descriptionValue, titleError, descriptionError, setDescription, setTitle} = props
 
 	const handleCheckSetDescription = (e) => {
-		if(typeof setDescription === 'function') {
+		if (typeof setDescription === 'function') {
 			setDescription(e)
 		}
 	}
 
 	const handleCheckSetTitle = (e) => {
-		if(typeof setTitle === 'function') {
+		if (typeof setTitle === 'function') {
 			setTitle(e)
 		}
 	}
 
-	const handleCheckAddOrSaveEditedNewSchedule = (e,weekNumberValue,elementId) => {
-		if(typeof addNewSchedule === 'function' && newOrEdit === 'new') {
-			addNewSchedule(e,weekNumberValue)
-		} if(typeof handleSaveEditedSchedule === 'function' && newOrEdit === 'edit') {
-			handleSaveEditedSchedule(e,weekNumberValue,elementId)
+	const handleCheckAddOrSaveEditedNewSchedule = (e, weekNumberValue, elementId) => {
+		if (typeof addNewSchedule === 'function' && newOrEdit === 'new') {
+			addNewSchedule(e, weekNumberValue)
+		}
+		if (typeof handleSaveEditedSchedule === 'function' && newOrEdit === 'edit') {
+			handleSaveEditedSchedule(e, weekNumberValue, elementId)
 		}
 	}
-	return(
+	return (
 		<Col className='recipes__description col-12 p-0'>
-			<form onSubmit={e => handleCheckAddOrSaveEditedNewSchedule(e,weekNumberValue,id)}
-				className='description-form'>
+			<form onSubmit={e => handleCheckAddOrSaveEditedNewSchedule(e, weekNumberValue, id)}
+			      className='description-form'>
 				<div className='description-form__box'>
 					<h1 className='description-form__title highlight'>{newOrEdit === 'edit' ? 'Edytuj Plan' : 'Nowy Plan'}</h1>
 					<button type='submit' className='description-form__button home-button'>Zapisz zamknij</button>

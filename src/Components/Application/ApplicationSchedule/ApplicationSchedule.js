@@ -4,17 +4,17 @@ import Container from "react-bootstrap/Container";
 import {ApplicationScheduleDescription} from "./ApplicationScheduleDescription";
 import {ApplicationScheduleWeekNumber} from "./ApplicationScheduleWeekNumber";
 import {ApplicationScheduleWeek} from "./ApplicationScheduleWeek";
-import * as firebase from "firebase";
 import {ApplicationScheduleList} from "./ApplicationScheduleList";
-
+import firebase from "firebase/app";
+import 'firebase/firestore'
+import 'firebase/auth'
 
 export const ApplicationSchedule = () => {
-
 	const [newScheduleTitle, setNewScheduleTitle] = useState('')
 	const [newScheduleDescription, setNewScheduleDescription] = useState('')
 	const [newScheduleWeekNumber, setNewScheduleWeekNumber] = useState('')
-	const [moveToAddNewSchedule,setMoveToAddNewSchedule] = useState(false)
-	const [scheduleId,setScheduleId] = useState('')
+	const [moveToAddNewSchedule, setMoveToAddNewSchedule] = useState(false)
+	const [scheduleId, setScheduleId] = useState('')
 	const [monday, setMonday] = useState({
 		breakfast: '',
 		secondBreakfast: '',
@@ -80,7 +80,7 @@ export const ApplicationSchedule = () => {
 				return dataToSeT
 
 			})
-			if(newArray.length > 0) {
+			if (newArray.length > 0) {
 				setMonday({
 					breakfast: newArray[0].title,
 					secondBreakfast: newArray[0].title,
@@ -132,12 +132,11 @@ export const ApplicationSchedule = () => {
 				})
 			}
 
-			})
-		},[])
+		})
+	}, [])
 
 
-
-	const handleAddNewSchedule = (e,scheduleWeekNumber) => {
+	const handleAddNewSchedule = (e, scheduleWeekNumber) => {
 		let db = firebase.firestore()
 		let user = firebase.auth().currentUser
 
@@ -168,7 +167,6 @@ export const ApplicationSchedule = () => {
 				saturday: saturday,
 				sunday: sunday
 			}
-			console.log(dataToSent)
 			db.collection('users').doc(user.uid).collection('schedules').add(dataToSent).then(data => {
 				setMoveToAddNewSchedule(false)
 				setNewScheduleWeekNumber('')
@@ -184,7 +182,7 @@ export const ApplicationSchedule = () => {
 						return dataToSeT
 
 					})
-					if(newArray.length > 0) {
+					if (newArray.length > 0) {
 						setMonday({
 							breakfast: newArray[0].title,
 							secondBreakfast: newArray[0].title,
@@ -246,10 +244,10 @@ export const ApplicationSchedule = () => {
 	const [newScheduleDescriptionError, setNewScheduleDescriptionError] = useState(false)
 	const [newScheduleWeekNumberError, setNewScheduleWeekNumberError] = useState(false)
 	const [newScheduleRecipesError, setScheduleRecipes] = useState(false)
+	const [editScheduleError,setEditScheduleError] = useState(false)
 	// if don't have any recipes will not be able to set a schedule
 
 	//set monday
-
 	const handleSetMonday = (e) => {
 		e.preventDefault()
 		const {value, name} = e.target
@@ -260,7 +258,6 @@ export const ApplicationSchedule = () => {
 			}
 		})
 	}
-
 	// set tuesday
 	const handleSetTuesday = (e) => {
 		e.preventDefault()
@@ -343,7 +340,6 @@ export const ApplicationSchedule = () => {
 
 	const handleScheduleTitleValidation = (e) => {
 		const {value} = e.target
-
 		if (value.length === 0 || value.length > 50) {
 			setNewScheduleTitle(value)
 			setNewScheduleTitleError(true)
@@ -353,49 +349,37 @@ export const ApplicationSchedule = () => {
 		}
 	}
 
-	const [weeks,setWeeks] = useState([])
-
-	useEffect(()=> {
+	const [weeks, setWeeks] = useState([])
+	useEffect(() => {
 		let db = firebase.firestore()
 		let user = firebase.auth().currentUser
 		db.collection('users').doc(user.uid).collection('schedules').onSnapshot(snapshot => {
-
 			let changes = snapshot.docChanges()
-			setWeeks( changes.map(change => {
+			setWeeks(changes.map(change => {
 				let dataToSeT = change.doc.data()
 				dataToSeT.id = change.doc.id
 				return dataToSeT.weekNumber
-
 			}))
-
 		})
-	},[])
+	}, [])
 
 
-	const checkWeeks = (array,value) => {
-
+	const checkWeeks = (array, value) => {
 		return array.some(element => element === value)
 	}
 	//set week number
 	const handleScheduleWeekNumberValidation = (e) => {
-
 		const {value} = e.target
 		const checkNumber = (value) => {
 			let regex = /^[1-9]\d*$/
 			return regex.test(value)
 		}
-
 		// user cannot add new plan with the same week number he can only remove or edit existing
 
-
-
-
-
-		if (parseInt(value) <= 0 || parseInt(value) > 51 || value.length === 0 || !checkNumber(value) || checkWeeks(weeks,value)){
+		if (parseInt(value) <= 0 || parseInt(value) > 51 || value.length === 0 || !checkNumber(value) || checkWeeks(weeks, value)) {
 			setNewScheduleWeekNumber(value)
 			setNewScheduleWeekNumberError(true)
-		}
-		else {
+		} else {
 			setNewScheduleWeekNumber(value)
 			setNewScheduleWeekNumberError(false)
 		}
@@ -405,17 +389,14 @@ export const ApplicationSchedule = () => {
 		setMoveToAddNewSchedule(true)
 	}
 
-	const handleEditSchedule = (e,idOfRecipe,userId) => {
+	const handleEditSchedule = (e, idOfRecipe, userId) => {
 		e.preventDefault();
 		let db = firebase.firestore()
 		let user = firebase.auth().currentUser
-
-
 		db.collection('users').doc(userId).collection('schedules').doc(idOfRecipe).get()
 			.then(data => {
 				let dataToDisplay = data.data()
 				dataToDisplay.id = data.id;
-
 				setNewScheduleTitle(dataToDisplay.title)
 				setNewScheduleDescription(dataToDisplay.description)
 				setNewScheduleWeekNumber(dataToDisplay.weekNumber)
@@ -430,15 +411,14 @@ export const ApplicationSchedule = () => {
 				setMoveToAddNewSchedule(true)
 				setNewOrEdit('edit')
 			})
-			.catch(e => console.log(e))
+			.catch(e =>{
+				setEditScheduleError(true)
+			})
 	}
 
-	const handleSaveEditedSchedule = (e,scheduleWeekNumber,elementId) => {
+	const handleSaveEditedSchedule = (e, scheduleWeekNumber, elementId) => {
 		let db = firebase.firestore()
 		let user = firebase.auth().currentUser
-
-
-
 		e.preventDefault()
 		if (newScheduleDescription.length === 0) {
 			setNewScheduleDescriptionError(true)
@@ -466,31 +446,29 @@ export const ApplicationSchedule = () => {
 				saturday: saturday,
 				sunday: sunday
 			}
-			console.log(elementId)
-
 			db.collection('users').doc(user.uid).collection('schedules').doc(elementId).set(dataToSent).then(data => {
 				setNewOrEdit('new')
 				setMoveToAddNewSchedule(false)
-
-
 			})
 		}
 	}
 
 
-	const [newOrEdit,setNewOrEdit] = useState('new')
-
+	const [newOrEdit, setNewOrEdit] = useState('new')
 	return (
 		<ApplicationTemplate>
 			<section className='schedule'>
 				{moveToAddNewSchedule === true && <Container fluid className='pr-4 pl-4 pr-md-5 pl-md-5 h-100'>
-					<ApplicationScheduleDescription id={scheduleId} handleSaveEditedSchedule={handleSaveEditedSchedule}  newOrEdit={newOrEdit} weekNumberValue={newScheduleWeekNumber} addNewSchedule={handleAddNewSchedule}
+					<ApplicationScheduleDescription id={scheduleId} handleSaveEditedSchedule={handleSaveEditedSchedule}
+					                                newOrEdit={newOrEdit} weekNumberValue={newScheduleWeekNumber}
+					                                addNewSchedule={handleAddNewSchedule}
 					                                descriptionValue={newScheduleDescription} titleValue={newScheduleTitle}
 					                                titleError={newScheduleTitleError}
 					                                descriptionError={newScheduleDescriptionError}
 					                                setTitle={handleScheduleTitleValidation}
 					                                setDescription={handleScheduleDescriptionValidation}/>
-					<ApplicationScheduleWeekNumber newOrEdit={newOrEdit} weeks={weeks} checkWeeks={checkWeeks} setWeekNumber={handleScheduleWeekNumberValidation}
+					<ApplicationScheduleWeekNumber newOrEdit={newOrEdit} weeks={weeks} checkWeeks={checkWeeks}
+					                               setWeekNumber={handleScheduleWeekNumberValidation}
 					                               weekNumberError={newScheduleWeekNumberError}
 					                               weekNumberValue={newScheduleWeekNumber}/>
 					<ApplicationScheduleWeek sunday={sunday} saturday={saturday} friday={friday} thursday={thursday}
@@ -500,7 +478,8 @@ export const ApplicationSchedule = () => {
 					                         setFriday={handleSetFriday} setSaturday={handleSetSaturday}
 					                         setSunday={handleSetSunday}/>
 				</Container>}
-				{moveToAddNewSchedule === false && <ApplicationScheduleList editExistingSchedule={handleEditSchedule} moveToAddNewScheduleSection={handleMoveToAddNewSchedule}/>}
+				{moveToAddNewSchedule === false && <ApplicationScheduleList editExistingSchedule={handleEditSchedule}
+				                                                            moveToAddNewScheduleSection={handleMoveToAddNewSchedule}/>}
 			</section>
 		</ApplicationTemplate>
 	)

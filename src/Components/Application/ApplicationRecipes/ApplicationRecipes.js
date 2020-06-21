@@ -1,6 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {ApplicationTemplate} from "../../Templates/ApplicationTemplate";
-import * as firebase from "firebase";
+import firebase from "firebase/app";
+import 'firebase/firestore'
+import 'firebase/auth'
 import {ApplicationRecipesList} from "./ApplicationRecipesList";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -8,9 +10,8 @@ import {ApplicationRecipesDescription} from "./ApplicationRecipesDescription";
 import {ApplicationRecipesInstructions} from "./ApplicationRecipesInstructions";
 import {ApplicationRecipesIngredients} from "./ApplicationRecipesIngredients";
 
-
-export const ApplicationRecipes = data => {
-	const [recipesList,setRecipesList] = useState(true)
+export const ApplicationRecipes = () => {
+	const [recipesList, setRecipesList] = useState(true)
 	const [newRecipe, setNewRecipe] = useState({
 		id: '',
 		title: '',
@@ -18,26 +19,18 @@ export const ApplicationRecipes = data => {
 		instructions: [],
 		ingredients: []
 	})
-
 	// Errors state
 	const [newRecipeTitleError, setNewRecipeTitleError] = useState(false)
 	const [newRecipeDescriptionError, setNewRecipeDescriptionError] = useState(false)
 	const [newRecipeInstructionError, setNewRecipeInstructionError] = useState(false)
 	const [newRecipeIngredientError, setNewRecipeIngredientError] = useState(false)
-
-
+	const [editRecipeError, setEditRecipesError] = useState(false)
 	// Instructions state
-
 	const [newRecipeInstruction, setNewRecipeInstruction] = useState('')
 	const [newRecipeIngredient, setNewRecipeIngredient] = useState('')
-
 	// here we will change if in recipe description will change name from new recipe on edit recipe
-	const [newOrEdit,setNewOrEdit] = useState('new')
-	const [edited,setEdited] = useState(true)
-
-
-	//References recipes Collections
-	let recipesRef = firebase.database().ref('recipes')
+	const [newOrEdit, setNewOrEdit] = useState('new')
+	const [edited, setEdited] = useState(true)
 	let db = firebase.firestore()
 	let user = firebase.auth().currentUser
 
@@ -58,11 +51,7 @@ export const ApplicationRecipes = data => {
 			setNewRecipeTitleError(false)
 			setNewRecipeDescriptionError(false)
 			setRecipesList(true)
-			let newRecipeRef = recipesRef.push();
-			db.collection('users').doc(user.uid).collection('recipes').add(newRecipe).then(data => console.log(data))
-			newRecipeRef.set(newRecipe).then(r => {
-
-				console.log('dane wysłane :)')
+			db.collection('users').doc(user.uid).collection('recipes').add(newRecipe).then(data => {
 				setNewRecipe({
 					id: '',
 					title: '',
@@ -70,7 +59,7 @@ export const ApplicationRecipes = data => {
 					instructions: [],
 					ingredients: []
 				})
-			});
+			})
 		}
 	}
 
@@ -78,7 +67,6 @@ export const ApplicationRecipes = data => {
 
 	const handleRecipeTittleValidation = (e) => {
 		const {value, name} = e.target
-
 		if (value.length === 0 || value.length > 50) {
 			setNewRecipeTitleError(true)
 			setNewRecipe(prevState => {
@@ -101,7 +89,6 @@ export const ApplicationRecipes = data => {
 	//validation for recipeDescription
 	const handleRecipeDescriptionValidation = (e) => {
 		const {value, name} = e.target
-
 		if (value.length === 0 || value.length > 150) {
 			setNewRecipeDescriptionError(true)
 			setNewRecipe(prevState => {
@@ -189,31 +176,25 @@ export const ApplicationRecipes = data => {
 	const handleDeleteElement = (e, array, elementToDelete, arrayToEdit) => {
 		e.preventDefault()
 		let newArray = array.filter(element => element.id !== elementToDelete)
-
 		setNewRecipe(prevState => {
 			return {
 				...prevState,
 				[arrayToEdit]: newArray
 			}
 		})
-
 	}
 
 	//EditElement
-
 	const handleSaveEditedElement = (e, array, elementToSave, newName, arrayToEdit) => {
 		e.preventDefault();
 		const newArray = array.map(element => {
-
 			if (element.id === elementToSave) {
 				element.name = newName
 				return element
 			}
 			return element
 		})
-
 		setNewRecipe(prevState => {
-
 			return {
 				...prevState,
 				[arrayToEdit]: newArray
@@ -227,9 +208,8 @@ export const ApplicationRecipes = data => {
 	}
 
 	//handle edit whole recipe after click this button user will be able to edit his saved recipe include title,description,ingredients and instructions
-	const handleEditRecipe = (e,idOfRecipe,userId) => {
+	const handleEditRecipe = (e, idOfRecipe, userId) => {
 		e.preventDefault();
-
 		db.collection('users').doc(userId).collection('recipes').doc(idOfRecipe).get()
 			.then(data => {
 				let dataToDisplay = data.data()
@@ -238,12 +218,13 @@ export const ApplicationRecipes = data => {
 				setRecipesList(false)
 				setNewOrEdit('edit')
 			})
-			.catch(e => console.log(e))
+			.catch(e => {
+				setEditRecipesError(true)
+			})
 	}
 
-
 	// here we save recipe which was edited
-	const handleSaveEditedRecipe = (e, newRecipeTitle, newRecipeDescription, newRecipeInstructions, newRecipeIngredients,userId,elementId) => {
+	const handleSaveEditedRecipe = (e, newRecipeTitle, newRecipeDescription, newRecipeInstructions, newRecipeIngredients, userId, elementId) => {
 		e.preventDefault();
 		if (newRecipeTitle.length <= 0 || newRecipeTitle.length > 50) {
 			setNewRecipeTitleError(true)
@@ -260,14 +241,8 @@ export const ApplicationRecipes = data => {
 			setNewRecipeTitleError(false)
 			setNewRecipeDescriptionError(false)
 			setRecipesList(true)
-			let newRecipeRef = recipesRef.push();
 			db.collection('users').doc(userId).collection('recipes').doc(elementId).set(newRecipe).then(data => {
 				setNewOrEdit('new')
-
-
-			})
-			newRecipeRef.set(newRecipe).then(r => {
-				console.log('dane wysłane :)')
 				setNewRecipe({
 					id: '',
 					title: '',
@@ -275,10 +250,9 @@ export const ApplicationRecipes = data => {
 					instructions: [],
 					ingredients: []
 				})
-			});
+			})
 		}
 	}
-
 
 	return (
 		<ApplicationTemplate>
@@ -286,7 +260,8 @@ export const ApplicationRecipes = data => {
 				{!recipesList &&
 				<Container fluid className='pr-4 pl-4 pr-md-5 pl-md-5 h-100'>
 					<Row className='h-100'>
-						<ApplicationRecipesDescription newRecipe={newRecipe} handleSaveEditedRecipes={handleSaveEditedRecipe} newOrEdit={newOrEdit} instructionsValue={newRecipe.instructions}
+						<ApplicationRecipesDescription newRecipe={newRecipe} handleSaveEditedRecipes={handleSaveEditedRecipe}
+						                               newOrEdit={newOrEdit} instructionsValue={newRecipe.instructions}
 						                               ingredientsValue={newRecipe.ingredients}
 						                               addNewRecipe={handleAddNewRecipe}
 						                               titleValue={newRecipe.title}
@@ -310,7 +285,8 @@ export const ApplicationRecipes = data => {
 						                               ingredientValidation={handleNewIngredientValidation}/>
 					</Row>
 				</Container>}
-				{recipesList && <ApplicationRecipesList editExistingRecipe={handleEditRecipe} moveToAddNewRecipeSection={handleRecipeList}/>}
+				{recipesList &&
+				<ApplicationRecipesList editExistingRecipe={handleEditRecipe} moveToAddNewRecipeSection={handleRecipeList}/>}
 			</section>
 		</ApplicationTemplate>
 	)

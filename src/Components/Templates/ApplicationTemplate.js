@@ -2,17 +2,19 @@ import React, {useEffect, useState} from "react";
 import {Logo} from "./Logo";
 import appBcg from '../../images/image.png'
 import {NavLink} from "react-router-dom";
-import * as firebase from "firebase";
-import {auth} from "firebase";
+import firebase from "firebase/app";
+import 'firebase/firestore'
+import 'firebase/auth'
 
 const style = {
 	backgroundImage: `url('${appBcg}')`
 }
 
 export const ApplicationTemplate = (props) => {
-	const [logged,setLogged] = useState(false)
-	const [openMenu,setOpenMenu] = useState( false)
-	const [name,setName] = useState('Imie')
+	const [logged, setLogged] = useState(false)
+	const [openMenu, setOpenMenu] = useState(false)
+	const [name, setName] = useState('Imie')
+	const [loggedOutError,setLoggedOutError] = useState(false)
 
 	// hamburger logic
 	const handleOpenMenu = (e) => {
@@ -23,19 +25,19 @@ export const ApplicationTemplate = (props) => {
 	//logout logic
 	const handleLogOut = (e) => {
 		e.preventDefault();
-		firebase.auth().signOut().then(r => console.log(r)).catch(err => console.log(err));
+		firebase.auth().signOut().then(data => setLoggedOutError(false)).catch(err => setLoggedOutError(true));
 	}
 
 	useEffect(() => {
 		firebase.auth().onAuthStateChanged(firebaseUser => {
-			if(firebaseUser) {
+			if (firebaseUser) {
 				setLogged(true)
 				setName(firebaseUser.email)
 			} else {
 				setLogged(false)
 			}
 		})
-	},[])
+	}, [])
 
 	return (
 		<>
@@ -59,9 +61,12 @@ export const ApplicationTemplate = (props) => {
 			<main className='app-main'>
 				<nav className={openMenu ? 'side-navigation' : 'side-navigation hide'}>
 					<ul className="nav-list">
-						<li className="nav-list__element"><NavLink to='/schedule-your-meal/application/desktop' className='nav-list__link'>Pulpit</NavLink></li>
-						<li className="nav-list__element"><NavLink to='/schedule-your-meal/application/recipes' className='nav-list__link'>Przepisy</NavLink></li>
-						<li className="nav-list__element"><NavLink to='/schedule-your-meal/application/schedule' className='nav-list__link'>Plany</NavLink></li>
+						<li className="nav-list__element"><NavLink  to='/schedule-your-meal/desktop'
+						                                           className='nav-list__link'>Pulpit</NavLink></li>
+						<li className="nav-list__element"><NavLink  to='/schedule-your-meal/recipes'
+						                                           className='nav-list__link'>Przepisy</NavLink></li>
+						<li className="nav-list__element"><NavLink  to='/schedule-your-meal/schedule'
+						                                           className='nav-list__link'>Plany</NavLink></li>
 					</ul>
 				</nav>
 				<div className='main-content' style={style}>

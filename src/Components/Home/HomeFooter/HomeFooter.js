@@ -30,20 +30,24 @@ export const HomeFooter = () => {
 							<button type='submit' className='home-button contact-form__button'>Lorem</button>
 						</form>
 						<div className='contact-social-media'>
-							<a rel="noopener noreferrer" className='contact-social-media__icon' target='_blank' href='https://www.linkedin.com/in/piotr-%C5%9Bliwka/'>
+							<a rel="noopener noreferrer" className='contact-social-media__icon' target='_blank'
+							   href='https://www.linkedin.com/in/piotr-%C5%9Bliwka/'>
 								<i className="fab fa-linkedin"/>
 							</a>
-							<a rel="noopener noreferrer" className='contact-social-media__icon' target='_blank' href='https://www.facebook.com/piotr.sliwka.1272/'>
+							<a rel="noopener noreferrer" className='contact-social-media__icon' target='_blank'
+							   href='https://www.facebook.com/piotr.sliwka.1272/'>
 								<i className="fab fa-facebook-square"/>
 							</a>
-							<a rel="noopener noreferrer" className='contact-social-media__icon' target='_blank' href='https://github.com/piotrsliwka333'>
+							<a rel="noopener noreferrer" className='contact-social-media__icon' target='_blank'
+							   href='https://github.com/piotrsliwka333'>
 								<i className="fab fa-github-square"/>
 							</a>
 						</div>
 					</Col>
 				</Row>
 			</Container>
-			<p className='contact__copyright'>copyright  <span className='contact__copyright-highlight'> ZaplanujJedzonko.pl</span></p>
+			<p className='contact__copyright'>copyright <span
+				className='contact__copyright-highlight'> ZaplanujJedzonko.pl</span></p>
 		</footer>
 	)
 }

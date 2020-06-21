@@ -3,7 +3,6 @@ import {Container, Row} from "react-bootstrap";
 import {HomeSliderContent} from "./HomeSliderContent";
 
 export const HomeSlider = () => {
-
 	const [currentSlide, setCurrentSlide] = useState(1)
 
 	const handleNextSlide = () => {
@@ -22,10 +21,9 @@ export const HomeSlider = () => {
 		}
 	}
 
-
 	return (
 		<section className='slider'>
-			<Container >
+			<Container>
 				<Row className='align-items-center'>
 					<span onClick={handlePrevSlide} className='slider__arrows col-2 col-md-1 col-xl-1'>
 						<i className="fas fa-chevron-left"/>

@@ -1,16 +1,18 @@
 import React, {useEffect, useState} from "react";
 import {Col} from "react-bootstrap";
 import {ApplicationDesktopNotification} from "./ApplicationDesktopNotification";
-import * as firebase from "firebase";
+import firebase from "firebase/app";
+import 'firebase/firestore'
+import 'firebase/auth'
 
 export const ApplicationDesktopNotifications = () => {
-	const [notification,setNotification] = useState({info:true,warning:true,cheering:true})
-	const [recipes,setRecipes] = useState('')
+	const [notification, setNotification] = useState({info: true, warning: true, cheering: true})
+	const [recipes, setRecipes] = useState('')
 	const handleHideNotification = (e) => {
 		e.preventDefault();
 		const {name} = e.target
 		setNotification(prevState => {
-			return({
+			return ({
 				...prevState,
 				[name]: false
 			})
@@ -18,7 +20,6 @@ export const ApplicationDesktopNotifications = () => {
 	}
 
 	const checkHowManyRecipes = (array) => {
-		console.log(array.length === 1)
 		switch (array.length) {
 			case 0:
 				setRecipes(`masz ${array.length} przepisów, dodaj jakiś :)`)
@@ -26,7 +27,9 @@ export const ApplicationDesktopNotifications = () => {
 			case 1:
 				setRecipes(`masz już ${array.length} przepis, dodaj jeszcze`)
 				break;
-			case 2: case 3: case 4:
+			case 2:
+			case 3:
+			case 4:
 				setRecipes(`masz już ${array.length} przepisy, nieźle`)
 				break;
 			default:
@@ -37,9 +40,7 @@ export const ApplicationDesktopNotifications = () => {
 	useEffect(() => {
 		let db = firebase.firestore()
 		let user = firebase.auth().currentUser
-
 		db.collection('users').doc(user.uid).collection('recipes').onSnapshot(snapshot => {
-
 			let changes = snapshot.docChanges()
 			let newArray = changes.map(change => {
 				let dataToSeT = change.doc.data()
@@ -48,17 +49,19 @@ export const ApplicationDesktopNotifications = () => {
 			})
 			checkHowManyRecipes(newArray)
 		})
-
 	}, [])
 
 	return (
 		<Col className='col-12 col-md-7 col-xl-7 desktop__notifications-wrapper'>
 			{notification.info && <ApplicationDesktopNotification display={handleHideNotification} name='info'
-			 extraClass='info'	icon="fas fa-info-circle" text={recipes}/>}
+			                                                      extraClass='info' icon="fas fa-info-circle"
+			                                                      text={recipes}/>}
 			{notification.warning && <ApplicationDesktopNotification display={handleHideNotification} name='warning'
-				extraClass='warning' icon="fas fa-exclamation-circle" text='Pamiętaj aby dodać przepis'/>}
+			                                                         extraClass='warning' icon="fas fa-exclamation-circle"
+			                                                         text='Pamiętaj aby dodać przepis'/>}
 			{notification.cheering && <ApplicationDesktopNotification display={handleHideNotification} name='cheering'
-				extraClass='cheering' icon='fas fa-check-circle' text='Świetnie że jesteś! Udanego planowania i smacznego :)'/>}
+			                                                          extraClass='cheering' icon='fas fa-check-circle'
+			                                                          text='Świetnie że jesteś! Udanego planowania i smacznego :)'/>}
 		</Col>
 	)
 }

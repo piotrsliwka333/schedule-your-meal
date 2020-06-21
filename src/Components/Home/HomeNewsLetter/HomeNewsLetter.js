@@ -2,8 +2,7 @@ import React from "react";
 import {Col, Container, Row} from "react-bootstrap";
 
 export const HomeNewsLetter = () => {
-
-	return(
+	return (
 		<section className='news-letter'>
 			<Container>
 				<Row className='align-items-center'>
