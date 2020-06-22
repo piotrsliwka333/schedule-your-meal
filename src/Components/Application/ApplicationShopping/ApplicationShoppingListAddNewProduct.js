@@ -6,7 +6,8 @@ import 'firebase/auth'
 export const ApplicationShoppingListAddNewProduct = () => {
 	const [newProduct, setNewProduct] = useState({
 		name: '',
-		id: ''
+		id: '',
+		done: false
 	})
 	const [newProductError, setNewProductError] = useState(false)
 
@@ -39,7 +40,7 @@ export const ApplicationShoppingListAddNewProduct = () => {
 			setNewProductError(true)
 		} else {
 			db.collection('users').doc(user.uid).collection('products').add(newProduct).then(data => {
-				setNewProduct({name: '', id: ''})
+				setNewProduct({name: '', id: '',done:false})
 			})
 				.catch(e => setNewProductError(true))
 		}

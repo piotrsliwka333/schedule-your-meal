@@ -24,6 +24,11 @@
     border: 1px solid #4a4a49;
     background-color: gray;
   }
+  .done {
+    color: white;
+    text-decoration: line-through;
+    background-color: #4a4a49;
+  }
   .action-container {
     .element-btn {
       font-size: 1.5rem;
@@ -55,4 +60,8 @@
 
 
   }
+}
+
+.done {
+  background-color: #4a4a49;
 }

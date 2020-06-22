@@ -1,0 +1,21 @@
+.navigation-element {
+  padding: 5px 10px;
+  width: 95%;
+  border-radius: 20px;
+  border: 2px dashed $color-text-row-ext-icons;
+  background-color: $color-bcg;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px auto;
+  &__name {
+    font-size: 1.5rem;
+    color: $color-header-column-text;
+  }
+  &__btn {
+    border-radius: 15px;
+    width: 120px;
+    padding: 5px;
+    font-size: 1.2rem;
+  }
+}

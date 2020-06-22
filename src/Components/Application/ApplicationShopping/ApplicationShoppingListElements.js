@@ -6,6 +6,7 @@ import {ApplicationShoppingListElement} from "./ApplicationShoppingListElement";
 
 export const ApplicationShoppingListElements = () => {
 	const [products, setProducts] = useState([])
+	const [btnInfo,setBtnInfo] = useState(false)
 	let db = firebase.firestore()
 	let user = firebase.auth().currentUser
 	useEffect(() => {
@@ -25,6 +26,7 @@ export const ApplicationShoppingListElements = () => {
 						if(element.id !== change.doc.id) {
 							return element
 						} else {
+							element.done = change.doc.data().done
 							element.name = change.doc.data().name
 							return element
 						}
@@ -40,8 +42,6 @@ export const ApplicationShoppingListElements = () => {
 		db.collection('users').doc(user.uid).collection('products').doc(elementId).delete().then().catch(e => console.log(e))
 	}
 
-
-
 	//saveEditedProduct
 	const saveEditedProduct = (elementId,name) => {
 		db.collection('users').doc(user.uid).collection('products').doc(elementId).set({
@@ -50,8 +50,32 @@ export const ApplicationShoppingListElements = () => {
 		}).then()
 	}
 
+	const deleteAllCompleted = (e,products) => {
+		e.preventDefault()
+		console.log('work')
+		products.forEach(element=> {
+			if(element.done === true) {
+				db.collection('users').doc(user.uid).collection('products').doc(element.id).delete().then().catch(e => console.log(e))
+			}
+		})
+
+	}
+
+	const showInfo = (e) => {
+		e.preventDefault()
+		setBtnInfo(true)
+	}
+	const hideInfo = (e) => {
+		e.preventDefault()
+		setBtnInfo(false)
+	}
 	return (
 		<div className='shopping-list__elements'>
+			<button onClick={e => deleteAllCompleted(e,products)} onMouseEnter={e => showInfo(e)} onMouseLeave={e => hideInfo(e)} className='delete-completed-btn'>
+				<i className="fas fa-eraser"/>
+			</button>
+			{btnInfo && <p className='btn-info'>Usuń wszystkie skończone</p>}
+
 			{products.map(element => <ApplicationShoppingListElement key={element.id} name={element.name} id={element.id}
 			                                                         saveEditedProduct={saveEditedProduct}  deleteElement={deleteProduct}/>)}
 		</div>

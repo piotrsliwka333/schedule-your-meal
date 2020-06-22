@@ -4,5 +4,29 @@
   padding: 6px 0;
   overflow: auto;
   height: 85%;
-
+  position: relative;
+  .delete-completed-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: transparent;
+    border: none;
+    padding: 5px;
+    font-size: 2rem;
+    color: $color-trash-icon;
+  }
+  .btn-info {
+    font-family: $font-text;
+    font-size: 1.5rem;
+    color: $color-header-column-text;
+    position: absolute;
+    width: 150px;
+    height: 100px;
+    background-color: $color-bcg;
+    border: 2px dashed $color-text-row-ext-icons;
+    padding: 5px;
+    top: 35px;
+    right: 0;
+    transition: 0.5s;
+  }
 }

@@ -1,4 +1,6 @@
 .shopping-navigation {
+  padding: 5px;
+  z-index: 5;
   animation-name: smoothShow;
   animation-duration: 0.3s;
   animation-timing-function: linear;
@@ -7,10 +9,11 @@
   left: 30px;
   bottom: 30px;
   border-radius: 4px 1px 1px 4px;
-  width: 30%;
+  width: 50%;
   background-color: lighten($color-bcg,1%);
   border: 2px dashed $color-text-row-ext-icons;
   @include tablet {
+    width: 30%;
     position: static;
     display: block;
     animation-name: solo;
@@ -19,13 +22,43 @@
     width: 25%;
     display: block;
   }
+  .nav-option {
+    height: 100%;
+    overflow: auto;
+    &__title {
+     text-align: center;
+      font-size: 2.2rem;
+      color: $color-button-highlight-headers;
+      font-weight: 600;
+      margin: 10px 0;
+    }
+    &__select {
+      display: block;
+      margin: 0 auto;
+      font-size: 2rem;
+      font-weight: bold;
+      font-family: "Open sans", sans-serif;
+      color: #5b605f;
+      border: 1px solid #a1a194;
+      border-radius: 3px;
+      padding: 5px;
+      width: 80%;
+      margin: 0 auto;
+    }
+    .nav-ingredients__title {
+      color: $color-side-panel;
+      font-size: 2rem;
+      text-align: center;
+      margin: 20px 0;
+      font-weight: 600;
+    }
+  }
 }
-
 @keyframes smoothShow {
  0%{
    width: 10%;
  }
   100% {
-    width: 30%;
+    width: 50%;
   }
 }
