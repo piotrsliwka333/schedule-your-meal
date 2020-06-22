@@ -9,11 +9,20 @@
   border-radius: 15px;
   border: 2px dashed $color-text-row-ext-icons;
   &__name {
+    width: 65%;
+    word-break: break-word;
+    background: transparent;
+    word-wrap: break-spaces;
+    border: none;
     font-size: 1.5rem;
     color: $color-header-column-text;
     @include tablet {
       font-size: 2rem;
     }
+  }
+  &__name-editable {
+    border: 1px solid #4a4a49;
+    background-color: gray;
   }
   .action-container {
     .element-btn {

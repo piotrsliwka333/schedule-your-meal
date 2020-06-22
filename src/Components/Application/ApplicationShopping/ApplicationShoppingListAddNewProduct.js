@@ -35,7 +35,7 @@ export const ApplicationShoppingListAddNewProduct = () => {
 
 	const handleAddNewProduct = (e) => {
 		e.preventDefault();
-		if (newProduct.length <= 2) {
+		if (newProduct.name.length <= 2) {
 			setNewProductError(true)
 		} else {
 			db.collection('users').doc(user.uid).collection('products').add(newProduct).then(data => {
