@@ -50,7 +50,8 @@ export const ApplicationShoppingListElement = (props) => {
 		<div className={done ? 'element done' : 'element'}>
 			<input disabled={disabled} onKeyPress={e => keyPress(e, id, nameOfProduct)}
 			       onChange={e => setNameOfProduct(e.target.value)}
-			       className={disabled ? done ? 'element__name done' : 'element__name' : 'element__name element__name-editable'} value={nameOfProduct}/>
+			       className={disabled ? done ? 'element__name done' : 'element__name' : 'element__name element__name-editable'}
+			       value={nameOfProduct}/>
 			<div className='action-container'>
 				<button disabled={done} onClick={e => editElement(e)} className='element-btn edit-btn'>
 					<i className="far fa-edit"/>
@@ -58,7 +59,7 @@ export const ApplicationShoppingListElement = (props) => {
 				<button onClick={e => checkDeleteElement(e, id)} className='element-btn delete-btn'>
 					<i className="far fa-trash-alt"/>
 				</button>
-				<button onClick={e => markAsDone(e,id)} className='element-btn complete-btn'>
+				<button onClick={e => markAsDone(e, id)} className='element-btn complete-btn'>
 					<i className="far fa-check-circle"/>
 				</button>
 			</div>

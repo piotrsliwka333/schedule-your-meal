@@ -40,7 +40,7 @@ export const ApplicationShoppingListAddNewProduct = () => {
 			setNewProductError(true)
 		} else {
 			db.collection('users').doc(user.uid).collection('products').add(newProduct).then(data => {
-				setNewProduct({name: '', id: '',done:false})
+				setNewProduct({name: '', id: '', done: false})
 			})
 				.catch(e => setNewProductError(true))
 		}
@@ -50,11 +50,13 @@ export const ApplicationShoppingListAddNewProduct = () => {
 		<form onSubmit={e => handleAddNewProduct(e)} className='shopping-list-form'>
 			<label className='shopping-list-form__label'>Nowy Produkt</label>
 			<input value={newProduct.name} onChange={e => handleNewProductValidation(e)}
-			       className={newProductError ? 'shopping-list-form__input error' : 'shopping-list-form__input'} type='text' name='name' placeholder='nowy produkt'/>
+			       className={newProductError ? 'shopping-list-form__input error' : 'shopping-list-form__input'} type='text'
+			       name='name' placeholder='nowy produkt'/>
 			<button className='shopping-list-form-btn' type='submit'>
 				<i className="fas fa-plus-square"/>
 			</button>
-			{newProductError && <p className='error-message product-error'>{newProduct.name.length <=2 ? 'co najmniej 3 znaki' : 'max. 50 znaków'}</p>}
+			{newProductError && <p
+				className='error-message product-error'>{newProduct.name.length <= 2 ? 'co najmniej 3 znaki' : 'max. 50 znaków'}</p>}
 		</form>
 	)
 }

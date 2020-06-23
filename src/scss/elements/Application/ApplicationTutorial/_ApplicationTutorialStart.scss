@@ -1,0 +1,32 @@
+.tutorial-start {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  &__title {
+    text-align: center;
+    font-size: 4rem;
+    color: $color-button-highlight-headers;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+  &__btn {
+    font-size: 1.4rem;
+
+    padding: 12px 6px;
+    border-radius: 5px;
+    box-shadow: rgba(0,0,0,0.6) 0 1rem 1rem;
+    transition: 1s;
+    @include tablet {
+      width: 300px;
+      font-size: 2rem;
+      padding: 12px 6px;
+    }
+    &:hover {
+      transition: 1s;
+      box-shadow: rgba(0,0,0,0.6) 0 1.4rem 1.4rem;
+      background-color: lighten($color-button-highlight-headers,5%);
+    }
+  }
+}

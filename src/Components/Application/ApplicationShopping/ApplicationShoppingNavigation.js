@@ -6,9 +6,9 @@ import {ApplicationShoppingNavigationElement} from "./ApplicationShoppingNavigat
 
 export const ApplicationShoppingNavigation = (props) => {
 	const {showOrHide} = props
-	const [recipes,setRecipes] = useState([])
-	const [currentRecipe,setCurrentRecipe] = useState('wait')
-	const [ingredients,setIngredients] = useState([])
+	const [recipes, setRecipes] = useState([])
+	const [currentRecipe, setCurrentRecipe] = useState('wait')
+	const [ingredients, setIngredients] = useState([])
 	let db = firebase.firestore()
 	let user = firebase.auth().currentUser
 
@@ -25,18 +25,18 @@ export const ApplicationShoppingNavigation = (props) => {
 				}
 			})
 		})
-	},[])
+	}, [])
 
 	useEffect(() => {
-		if(currentRecipe !== 'wait') {
+		if (currentRecipe !== 'wait') {
 			db.collection('users').doc(user.uid).collection('recipes').doc(currentRecipe).get().then(data => {
 				let ingredientsArray = [];
 				setIngredients(data.data().ingredients)
 			})
 		}
-	},[currentRecipe])
+	}, [currentRecipe])
 
-	const addIngredientToList = (e,name) => {
+	const addIngredientToList = (e, name) => {
 		db.collection('users').doc(user.uid).collection('products').add({
 			id: '',
 			name: name,
@@ -44,16 +44,19 @@ export const ApplicationShoppingNavigation = (props) => {
 		}).then()
 	}
 
-	return(
+	return (
 		<nav className={showOrHide ? 'shopping-navigation' : 'shopping-navigation hide'}>
 			<div className='nav-option'>
 				<h2 className='nav-option__title'>Wybierz swój przepis</h2>
 				<select value={currentRecipe} onChange={e => setCurrentRecipe(e.target.value)} className='nav-option__select'>
-					{recipes.map(element => <option key={element.id} value={element.id} className='nav-option__option'>{element.title}</option>)}
+					{recipes.map(element => <option key={element.id} value={element.id}
+					                                className='nav-option__option'>{element.title}</option>)}
 				</select>
 				<h3 className='nav-ingredients__title'>Składniki przepisu</h3>
 				<div className='ingredients-box'>
-					{ingredients.map(element => <ApplicationShoppingNavigationElement key={element.id} addToList={addIngredientToList} name={element.name}/>)}
+					{ingredients.map(element => <ApplicationShoppingNavigationElement key={element.id}
+					                                                                  addToList={addIngredientToList}
+					                                                                  name={element.name}/>)}
 				</div>
 			</div>
 		</nav>

@@ -4,7 +4,7 @@ import {ApplicationShoppingListElements} from "./ApplicationShoppingListElements
 
 export const ApplicationShoppingList = () => {
 
-	return(
+	return (
 		<div className='shopping-list'>
 			<ApplicationShoppingListAddNewProduct/>
 			<ApplicationShoppingListElements/>

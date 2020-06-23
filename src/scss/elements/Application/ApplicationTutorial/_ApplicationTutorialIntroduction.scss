@@ -1,0 +1,60 @@
+.tutorial-introduction {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  &__title {
+    text-align: center;
+    color: $color-button-highlight-headers;
+    font-size: 1.5rem;
+    @include tablet {
+      font-size: 3rem;
+    }
+  }
+
+  .logo {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    .logo-first {
+      color: #4a4a49;
+    }
+  }
+  &__text {
+    font-size: 1.8rem;
+    line-height: 2.3rem;
+    color: $color-header-column-text;
+    width: 95%;
+    margin: 10px auto;
+    text-align: center;
+    @include tablet {
+      margin: 20px auto;
+      width: 60%;
+      line-height: 3rem;
+      font-size: 2rem;
+    }
+  }
+  &-btn {
+    padding: 12px 6px;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+    box-shadow: rgba(0,0,0,0.6) 0 1rem 1rem;
+    transition: 1s;
+    @include tablet {
+      padding: 15px 10px;
+      font-size: 1.5rem;
+    }
+    &:hover {
+      box-shadow: rgba(0,0,0,0.6) 0 1.2rem 1.2rem;
+      color: $color-button-highlight-headers;
+      background-color: $color-bcg;
+      font-size: 1.5rem;
+      @include tablet {
+        font-size: 1.9rem;
+      }
+    }
+  }
+}

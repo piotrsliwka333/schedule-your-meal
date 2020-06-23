@@ -1,0 +1,67 @@
+@keyframes showAnimation {
+  0% {
+    transform: scale(0.7);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.tutorial-element {
+  animation-name: showAnimation;
+  animation-timing-function: ease;
+  animation-duration: .5s;
+  &__title {
+    font-size: 3rem;
+    color: $color-button-highlight-headers;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+
+  }
+  &__image {
+    display: block;
+    margin: 0 auto;
+    width: 95%;
+    border-radius: 20px;
+
+
+  }
+  &__text {
+    color: $color-header-column-text;
+    width: 95%;
+    margin: 15px auto;
+    text-align: center;
+    font-size: 1.8rem;
+    line-height: 3rem;
+    font-weight: 600;
+    @include tablet {
+      font-size: 2rem;
+      width: 90%;
+    }
+  }
+
+  .btn-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__btn {
+    font-size: 0.9rem;
+    width: 90px;
+    padding: 7px 3px;
+    border-radius: 5px;
+    box-shadow: rgba(0,0,0,0.6) 0 1rem 1rem;
+    transition: 1s;
+    @include tablet {
+      font-size: 1.4rem;
+      padding: 12px 6px;
+      width: 150px;
+    }
+    &:hover {
+      transition: 1s;
+      box-shadow: rgba(0,0,0,0.6) 0 1.4rem 1.4rem;
+      background-color: lighten($color-button-highlight-headers,5%);
+    }
+  }
+}

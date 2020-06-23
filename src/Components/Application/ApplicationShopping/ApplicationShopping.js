@@ -5,16 +5,16 @@ import {ApplicationShoppingNavigationToggle} from "./ApplicationShoppingNavigati
 import {ApplicationShoppingList} from "./ApplicationShoppingList";
 
 export const ApplicationShopping = () => {
-	const [showNavigation,setShowNavigation] = useState(false)
+	const [showNavigation, setShowNavigation] = useState(false)
 
 	const handleChangeDisplayOfNavigation = (e) => {
 		e.preventDefault()
 		setShowNavigation(!showNavigation)
 	}
 
-	return(
+	return (
 		<ApplicationTemplate>
-			<section className='shopping' >
+			<section className='shopping'>
 				<ApplicationShoppingNavigationToggle showOrHideNav={handleChangeDisplayOfNavigation}/>
 				<ApplicationShoppingNavigation showOrHide={showNavigation}/>
 				<ApplicationShoppingList/>

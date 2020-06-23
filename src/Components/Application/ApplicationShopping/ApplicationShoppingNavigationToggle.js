@@ -8,7 +8,7 @@ export const ApplicationShoppingNavigationToggle = (props) => {
 			showOrHideNav(e);
 		}
 	}
-	return(
+	return (
 		<button onClick={e => checkShowOrHideNav(e)} className='shopping-navigation-toggle'>
 			<i className="fas fa-utensils"/>
 		</button>
