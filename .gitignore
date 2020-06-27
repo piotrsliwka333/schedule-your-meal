@@ -31,6 +31,6 @@ yarn-error.log*
 # Logs
 
 #firebase
- .firebase/
- .firebaserc
- firebase.json
+.firebase/
+.firebaserc
+firebase.json
