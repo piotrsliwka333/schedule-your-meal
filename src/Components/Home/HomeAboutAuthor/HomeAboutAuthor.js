@@ -1,6 +1,6 @@
 import React from "react";
 import {Col, Container, Row} from "react-bootstrap";
-import Author from '../../../images/piotrSliwka.jpg'
+import Author from '../../../images/image.png'
 
 export const HomeAboutAuthor = () => {
 

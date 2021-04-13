@@ -25,19 +25,19 @@ export const App = () => {
 		<Router>
 			<>
 				<Route exact path={'/schedule-your-meal'} component={Home}/>
-				<Route path={'/'} render={() => (
+				<Route exact path={'/'} render={() => (
 					!logged ? (<ApplicationLogin/>) : (<Redirect to='/schedule-your-meal/desktop'/>)
 				)}/>
-				<Route path={'/schedule-your-meal/desktop'} render={() => (
+				<Route exact path={'/schedule-your-meal/desktop'} render={() => (
 					logged ? (<ApplicationDesktop/>) : (<Redirect to='/'/>)
 				)}/>
-				<Route path={'/schedule-your-meal/recipes'} render={() => (
+				<Route exact path={'/schedule-your-meal/recipes'} render={() => (
 					logged ? (<ApplicationRecipes/>) : (<Redirect to='/'/>)
 				)}/>
-				<Route path={'/schedule-your-meal/schedule'} render={() => (
+				<Route exact path={'/schedule-your-meal/schedule'} render={() => (
 					logged ? (<ApplicationSchedule/>) : (<Redirect to='/'/>)
 				)}/>
-				<Route path={'/schedule-your-meal/shopping'} render={() => (
+				<Route exact path={'/schedule-your-meal/shopping'} render={() => (
 					logged ? (<ApplicationShopping/>) : (<Redirect to='/'/>)
 				)}/>
 			</>
