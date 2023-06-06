@@ -14,100 +14,105 @@
 @import "elements/Templates/Logo";
 @import "elements/Templates/HomeTemplate";
 
-@import "elements/Home/Home";
+// Home page
+@import "elements/pages/Home/Home";
 //home buttons
-@import "elements/Home/HomeButtons/HomeButtons";
+@import "elements/Components/Home/HomeButtons/HomeButtons";
 
 //SLIDER
-@import "elements/Home/HomeSlider/HomeSlider";
+@import "elements/Components/Home/HomeSlider/HomeSlider";
 //Call Action
-@import "elements/Home/CallAction/CallAction";
+@import "elements/Components/Home/CallAction/CallAction";
 //About Application
-@import "elements/Home/HomeAboutApplication/HomeAboutApplication";
+@import "elements/Components/Home/HomeAboutApplication/HomeAboutApplication";
 //HomeNewsLetter
-@import "elements/Home/HomeNewsLetter/HomeNewsLetter";
+@import "elements/Components/Home/HomeNewsLetter/HomeNewsLetter";
 //HomeAboutAuthor
-@import "elements/Home/HomeAboutAuthor/HomeAboutAuthor";
+@import "elements/Components/Home/HomeAboutAuthor/HomeAboutAuthor";
 //HomeFooter
-@import "elements/Home/HomeFooter/HomeFooter";
+@import "elements/Components/Home/HomeFooter/HomeFooter";
 
 // APPLICATION
 @import "elements/Templates/ApplicationTemplate";
-//ApplicationLogin
-@import "elements/Application/ApplicationLogin/ApplicationLogin";
-//ApplicationLoginForm
-@import "elements/Application/ApplicationLogin/ApplicationLoginForm";
-//ApplicationRegisterForm
-@import "elements/Application/ApplicationLogin/ApplicationRegisterForm";
-//ApplicationDesktop
-@import "elements/Application/ApplicationDesktop/ApplicationDesktop";
-//ApplicationDesktopButtons
-@import "elements/Application/ApplicationDesktop/ApplicationDesktopButtons";
-//ApplicationDesktopButton
-@import "elements/Application/ApplicationDesktop/ApplicationDesktopButton";
-//ApplicationDesktopNotifications
-@import "elements/Application/ApplicationDesktop/ApplicationDesktopNotifications";
-//ApplicationDesktopNotification
-@import "elements/Application/ApplicationDesktop/ApplicationDesktopNotification";
-//ApplicationDesktopSchedule
-@import "elements/Application/ApplicationDesktop/ApplicationDesktopSchedule";
-//ApplicationDesktopScheduleElement
-@import "elements/Application/ApplicationDesktop/ApplicationDesktopScheduleElement";
-//ApplicationDesktopScheduleButtons
-@import "elements/Application/ApplicationDesktop/ApplicationDesktopScheduleButtons";
-//ApplicationRecipes
-@import "elements/Application/ApplicationRecipes/ApplicationRecipes";
-//ApplicationRecipesDescription
-@import "elements/Application/ApplicationRecipes/ApplicationRecipesDescription";
-//ApplicationRecipesInstructions
-@import "elements/Application/ApplicationRecipes/ApplicationRecipesInstructions";
-//ApplicationRecipesElements
-@import "elements/Application/ApplicationRecipes/ApplicationRecipesElements";
-//ApplicationRecipesElement
-@import "elements/Application/ApplicationRecipes/ApplicationRecipesElement";
-//ApplicationRecipesIngredients
-@import "elements/Application/ApplicationRecipes/ApplicationRecipesIngredients";
-//ApplicationListHeader
-@import "elements/Application/ApplicationList/ApplicationListHeader";
-//ApplicationListDescription
-@import "elements/Application/ApplicationList/ApplicationListDescription";
-//ApplicationListElements
-@import "elements/Application/ApplicationList/ApplicationListElements";
-//ApplicationListElement
-@import "elements/Application/ApplicationList/ApplicationListElement";
-//ApplicationSchedule
-@import "elements/Application/ApplicationSchedule/ApplicationSchedule";
-//ApplicationScheduleWeek
-@import 'elements/Application/ApplicationSchedule/ApplicationScheduleWeekNumber';
-//ApplicationScheduleWeek
-@import "elements/Application/ApplicationSchedule/ApplicationScheduleWeek";
-//ApplicationScheduleWeekKindOfDish
-@import "elements/Application/ApplicationSchedule/ApplicationScheduleWeekKindOfDish";
-//ApplicationScheduleWeekElements
-@import "elements/Application/ApplicationSchedule/ApplicationScheduleWeekElements";
-//ApplicationScheduleElement
-@import "elements/Application/ApplicationSchedule/ApplicationScheduleWeekElement";
-//ApplicationShopping
-@import "elements/Application/ApplicationShopping/ApplicationShopping";
-//ApplicationShoppingNavigation
-@import "elements/Application/ApplicationShopping/ApplicationShoppingNavigation";
-//ApplicationShoppingNavigationToggle
-@import "elements/Application/ApplicationShopping/ApplicationShoppingNavigationToggle";
-//ApplicationShoppingList
-@import "elements/Application/ApplicationShopping/ApplicationShoppingList";
-//ApplicationShoppingListAddNewProduct
-@import "elements/Application/ApplicationShopping/ApplicationShoppingListAddNewProduct";
-//ApplicationShoppingListElements
-@import "elements/Application/ApplicationShopping/ApplicationShoppingListElements";
-//ApplicationShoppingListElement
-@import "elements/Application/ApplicationShopping/ApplicationShoppingListElement";
-//ApplicationShoppingNavigationElement
-@import "elements/Application/ApplicationShopping/ApplicationShoppingNavigationElement";
+//Login
+@import "elements/pages/Login/Login";
+//LoginForm
+@import "elements/Components/Login/LoginForm";
+//RegisterForm
+@import "elements/Components/Login/RegisterForm";
+//Desktop
+@import "elements/pages/Desktop/Desktop";
+//DesktopButtons
+@import "elements/Components/Desktop/DesktopButtons";
+//DesktopButton
+@import "elements/Components/Desktop/DesktopButton";
+//DesktopNotifications
+@import "elements/Components/Desktop/DesktopNotifications";
+//DesktopNotification
+@import "elements/Components/Desktop/DesktopNotification";
+//DesktopSchedule
+@import "elements/Components/Desktop/DesktopSchedule";
+//DesktopScheduleElement
+@import "elements/Components/Desktop/DesktopScheduleElement";
+//DesktopScheduleButtons
+@import "elements/Components/Desktop/DesktopScheduleButtons";
+//Recipes
+@import "elements/pages/Recipes/Recipes";
+//RecipesDescription
+@import "elements/Components/Recipes/RecipesDescription";
+//RecipesInstructions
+@import "elements/Components/Recipes/RecipesInstructions";
+//RecipesElements
+@import "elements/Components/Recipes/RecipesElements";
+//RecipesElement
+@import "elements/Components/Recipes/RecipesElement";
+//RecipesIngredients
+@import "elements/Components/Recipes/RecipesIngredients";
+//ListHeader
+@import "elements/Components/Shared/List/ListHeader";
+//ListDescription
+@import "elements/Components/Shared/List/ListDescription";
+//ListElements
+@import "elements/Components/Shared/List/ListElements";
+//ListElement
+@import "elements/Components/Shared/List/ListElement";
+//Schedule
+@import "elements/pages/Schedule/Schedule";
+//ScheduleWeek
+@import "elements/Components/Schedule/ScheduleWeekNumber";
+//ScheduleWeek
+@import "elements/Components/Schedule/ScheduleWeek";
+//ScheduleWeekKindOfDish
+@import "elements/Components/Schedule/ScheduleWeekKindOfDish";
+//ScheduleWeekElements
+@import "elements/Components/Schedule/ScheduleWeekElements";
+//ScheduleElement
+@import "elements/Components/Schedule/ScheduleWeekElement";
+//Shopping
+@import "elements/pages/Shopping/Shopping";
+//ShoppingNavigation
+@import "elements/Components/Shopping/ShoppingNavigation";
+//ShoppingNavigationToggle
+@import "elements/Components/Shopping/ShoppingNavigationToggle";
+//ShoppingList
+@import "elements/Components/Shopping/ShoppingList";
+//ShoppingListAddNewProduct
+@import "elements/Components/Shopping/ShoppingListAddNewProduct";
+//ShoppingListElements
+@import "elements/Components/Shopping/ShoppingListElements";
+//ShoppingListElement
+@import "elements/Components/Shopping/ShoppingListElement";
+//ShoppingNavigationElement
+@import "elements/Components/Shopping/ShoppingNavigationElement";
 //ApplicationTutorial
-@import "elements/Application/ApplicationTutorial/ApplicationTutorial";
+@import "elements/Components/Shared/ApplicationTutorial/ApplicationTutorial";
 //ApplicationTutorialIntroduction
-@import "elements/Application/ApplicationTutorial/ApplicationTutorialIntroduction";
+@import "elements/Components/Shared/ApplicationTutorial/ApplicationTutorialIntroduction";
 //ApplicationTutorialElement
-@import "elements/Application/ApplicationTutorial/ApplicationTutorialElement";
+@import "elements/Components/Shared/ApplicationTutorial/ApplicationTutorialElement";
 //ApplicationTutorialStart
-@import "elements/Application/ApplicationTutorial/ApplicationTutorialStart";
+@import "elements/Components/Shared/ApplicationTutorial/ApplicationTutorialStart";
+//Loading
+@import "elements/Components/Shared/Loading/Loading";
+//NotFound
+@import "elements/pages/NotFound/NotFound";

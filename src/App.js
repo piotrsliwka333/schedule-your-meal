@@ -1,46 +1,115 @@
-import React, {useState} from "react"
-import {BrowserRouter as Router, Redirect, Route} from "react-router-dom";
-import {Home} from "./Components/Home/Home";
-import {ApplicationLogin} from "./Components/Application/ApplicationLogin/ApplicationLogin";
-import {ApplicationDesktop} from "./Components/Application/ApplicationDesktop/ApplicationDesktop";
-import {ApplicationRecipes} from "./Components/Application/ApplicationRecipes/ApplicationRecipes";
-import {ApplicationSchedule} from "./Components/Application/ApplicationSchedule/ApplicationSchedule";
+import React, { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
+import { Home } from "./pages/Home/Home";
+import { Desktop } from "./pages/Desktop/Desktop";
+import { Schedule } from "./pages/Schedule/Schedule";
 import firebase from "firebase/app";
-import 'firebase/firestore'
-import 'firebase/auth'
-import {ApplicationShopping} from "./Components/Application/ApplicationShopping/ApplicationShopping";
+import "firebase/firestore";
+import "firebase/auth";
+import { Shopping } from "./pages/Shopping/Shopping";
+import { ApplicationTemplate } from "./Templates/ApplicationTemplate";
+import { Recipes } from "./pages/Recipes/Recipes";
+import { NotFound } from "./pages/NotFound/NotFound";
+import { Login } from "./pages/Login/Login";
+import { Loading } from "./Components/Shared/Loading/Loading";
 
 export const App = () => {
-	const [logged, setLogged] = useState(false)
+  const [logged, setLogged] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-	firebase.auth().onAuthStateChanged(firebaseUser => {
-		if (firebaseUser) {
-			setLogged(true)
-		} else {
-			setLogged(false)
-		}
-	})
+  firebase.auth().onAuthStateChanged((firebaseUser) => {
+    if (firebaseUser) {
+      setLogged(true);
+    } else {
+      setLogged(false);
+    }
+    setIsLoading(false);
+  });
 
-	return (
-		<Router>
-			<>
-				<Route exact path={'/schedule-your-meal'} component={Home}/>
-				<Route exact path={'/'} render={() => (
-					!logged ? (<ApplicationLogin/>) : (<Redirect to='/schedule-your-meal/desktop'/>)
-				)}/>
-				<Route exact path={'/schedule-your-meal/desktop'} render={() => (
-					logged ? (<ApplicationDesktop/>) : (<Redirect to='/'/>)
-				)}/>
-				<Route exact path={'/schedule-your-meal/recipes'} render={() => (
-					logged ? (<ApplicationRecipes/>) : (<Redirect to='/'/>)
-				)}/>
-				<Route exact path={'/schedule-your-meal/schedule'} render={() => (
-					logged ? (<ApplicationSchedule/>) : (<Redirect to='/'/>)
-				)}/>
-				<Route exact path={'/schedule-your-meal/shopping'} render={() => (
-					logged ? (<ApplicationShopping/>) : (<Redirect to='/'/>)
-				)}/>
-			</>
-		</Router>
-	)
-}
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/landing" component={Home} />
+        <Route
+          exact
+          path={["/login", "/", "/recipes", "/schedule", "/shopping"]}
+        >
+          <ApplicationTemplate>
+            <Route
+              exact
+              path={"/login"}
+              render={() =>
+                isLoading ? (
+                  <Loading />
+                ) : logged ? (
+                  <Redirect to="/" />
+                ) : (
+                  <Login />
+                )
+              }
+            />
+            <Route
+              exact
+              path={"/"}
+              render={() =>
+                isLoading ? (
+                  <Loading />
+                ) : logged ? (
+                  <Desktop />
+                ) : (
+                  <Redirect to="/login" />
+                )
+              }
+            />
+            <Route
+              exact
+              path={"/recipes"}
+              render={() =>
+                isLoading ? (
+                  <Loading />
+                ) : logged ? (
+                  <Recipes />
+                ) : (
+                  <Redirect to="/login" />
+                )
+              }
+            />
+            <Route
+              exact
+              path={"/schedule"}
+              render={() =>
+                isLoading ? (
+                  <Loading />
+                ) : logged ? (
+                  <Schedule />
+                ) : (
+                  <Redirect to="/login" />
+                )
+              }
+            />
+            <Route
+              exact
+              path={"/shopping"}
+              render={() =>
+                isLoading ? (
+                  <Loading />
+                ) : logged ? (
+                  <Shopping />
+                ) : (
+                  <Redirect to="/login" />
+                )
+              }
+            />
+          </ApplicationTemplate>
+        </Route>
+
+        <Route path="*" component={NotFound} />
+      </Switch>
+    </Router>
+  );
+};

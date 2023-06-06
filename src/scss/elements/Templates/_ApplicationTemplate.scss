@@ -1,4 +1,3 @@
-
 .app-header {
   font-family: $font-text;
   background-color: $color-header-column-text;
@@ -14,7 +13,6 @@
     @include tablet {
       display: block;
     }
-
   }
   .user-box {
     height: 100%;
@@ -57,16 +55,14 @@
         font-size: 5rem;
       }
     }
-    &__logout {;
-     background: transparent;
+    &__logout {
+      background: transparent;
       border: none;
       border-radius: 50%;
       font-size: 2rem;
       color: $color-button-highlight-headers;
       @include tablet {
-
       }
-
     }
 
     .menu-toggle {
@@ -100,7 +96,6 @@
 
     @include tablet {
       width: 30%;
-
     }
 
     @include desktop {
@@ -110,9 +105,7 @@
     }
 
     .nav-list {
-
       &__element {
-
         .nav-list__link {
           cursor: pointer;
           display: block;
@@ -123,40 +116,35 @@
           transition: 0.5s;
           &:hover {
             text-decoration: none;
-            background-color: lighten($color-side-panel,5%);
+            background-color: lighten($color-side-panel, 5%);
           }
         }
         .active {
           text-decoration: none;
           transition: 0.5s;
           border-left: 4px solid $color-button-highlight-headers;
-
         }
         .active::after {
           transition: 0.5s;
           position: absolute;
           display: block;
-          content: '>';
+          content: ">";
           color: $color-button-highlight-headers;
           font-size: 3.5rem;
           font-weight: 500;
           right: 12px;
           top: 50%;
           transform: translateY(-50%);
-
         }
-
       }
     }
-
   }
-
 
   .main-content {
     padding: 20px 20px;
     height: 100%;
     width: 100%;
-    background-image: url("/../../../images/image.png");
+    background-image: url("/assets/images/image.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -168,7 +156,5 @@
       padding: 20px 40px;
       width: 85%;
     }
-
   }
 }
-
